@@ -1,18 +1,22 @@
 # nem2-uri-scheme
 
+[![npm version](https://badge.fury.io/js/nem2-uri-scheme.svg)](https://badge.fury.io/js/nem2-uri-scheme)
+[![Build Status](https://travis-ci.org/dgarcia360/nem2-uri-scheme.svg?branch=master)](https://travis-ci.org/dgarcia360/nem2-uri-scheme)
+[![Slack](https://img.shields.io/badge/chat-on%20slack-green.svg)](https://nem2.slack.com/messages/CB0UU89GS//)
+
 :warning: This library is experimental, use at your own risk.
 
-NEM URI Scheme library to serve transactions ready to be signed.
+NEM URI Scheme generator to serve transactions ready to be signed.
 
-This is PoC to validate the proposed [NIP4 Transaction URI Scheme](https://github.com/nemtech/NIP/issues/6). When stable, the repository will be moved to the [nemtech](https://github.com/nemtech) organization.
+This is a PoC to validate the proposed [NIP4 Transaction URI Scheme](https://github.com/nemtech/NIP/issues/6). When stable, the repository will be moved to the [nemtech](https://github.com/nemtech) organization.
 
 ## Installation
 
-``npm install https://github.com/dgarcia360/nem2-uri-scheme/tarball/master``
+``npm install nem2-uri-scheme``
 
 ## Examples
 
-### Build URI from transaction
+### Building a URI from a transaction
 
 ```typescript
 
@@ -30,7 +34,7 @@ This is PoC to validate the proposed [NIP4 Transaction URI Scheme](https://githu
     console.log(transactionURI);
 ```
 
-### Build URI from serialized transaction
+### Building a URI from a serialized transaction
 
 ```typescript
     import { TransferTransaction, Deadline, Address, PlainMessage, NetworkCurrencyMosaic, NetworkType } from 'nem2-sdk';
@@ -47,7 +51,7 @@ This is PoC to validate the proposed [NIP4 Transaction URI Scheme](https://githu
     console.log(transactionURI);
 ```
 
-### Build URI from DTO
+### Building a URI from a DTO
 
 ```typescript
     import { TransferTransaction, Deadline, Address, PlainMessage, NetworkCurrencyMosaic, NetworkType } from 'nem2-sdk';
@@ -64,7 +68,7 @@ This is PoC to validate the proposed [NIP4 Transaction URI Scheme](https://githu
     console.log(transactionURI);
 ```
 
-### Create transaction from URI
+### Creating a transaction from a URI
 
 ```typescript
     const transactionURI = new TransactionURI(URIFormat.serialized, serializedTransaction).build();
