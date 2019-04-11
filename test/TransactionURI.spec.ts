@@ -14,7 +14,9 @@
    limitations under the License.
  */
 
-import {expect} from "chai";
+import {expect, use} from "chai";
+import chaiExclude from 'chai-exclude';
+
 import {TransactionURI, URIFormat} from "../index";
 import {
     Address,
@@ -27,6 +29,8 @@ import {
     TransferTransaction,
     UInt64
 } from "nem2-sdk";
+
+use(chaiExclude);
 
 describe('TransactionURI should', () => {
 
@@ -127,12 +131,11 @@ describe('TransactionURI should', () => {
         const transaction = TransferTransaction.create(
             Deadline.create(),
             Address.createFromRawAddress('SAGYCE-QM5SK2-TGFUC5-Z5GZJR-ATKTBS-UQQMMH-KW5B'),
-            [NetworkCurrencyMosaic.createRelative(10)],
+            [new Mosaic(new MosaicId('acdf3b117a3c40cc'), UInt64.fromUint(10))],
             PlainMessage.create('hello'),
             NetworkType.MIJIN_TEST
         );
         const transactionURI = new TransactionURI(URIFormat.DTO, transaction.toJSON());
-        // expect(transactionURI.toTransaction()).to.deep.equal(transaction);
-        // Todo: SDK TransactionMapping.fromDTO fails (no type).
+        expect(transactionURI.toTransaction()).excluding('signature').to.deep.equal(transaction);
     });
 });
