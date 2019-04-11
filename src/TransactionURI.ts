@@ -15,6 +15,7 @@
  */
 
 import {URIScheme} from "./URIScheme";
+import {URLSearchParams} from "url";
 import {Transaction, TransactionMapping} from "nem2-sdk";
 
 export class TransactionURI implements URIScheme {
