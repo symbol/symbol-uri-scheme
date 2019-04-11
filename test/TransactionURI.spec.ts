@@ -17,7 +17,7 @@
 import {expect, use} from "chai";
 import chaiExclude from 'chai-exclude';
 
-import {TransactionURI, URIFormat} from "../index";
+import {TransactionURI} from "../index";
 import {
     Address,
     Deadline,
@@ -49,38 +49,15 @@ describe('TransactionURI should', () => {
         expect(transactionURI.chainId).to.deep.equal('local-network');
     });
 
-    it('be created from transaction (serialized)', () => {
-        const transaction = TransferTransaction.create(
-            Deadline.create(),
-            Address.createFromRawAddress('SAGYCE-QM5SK2-TGFUC5-Z5GZJR-ATKTBS-UQQMMH-KW5B'),
-            [NetworkCurrencyMosaic.createRelative(10)],
-            PlainMessage.create('hello'),
-            NetworkType.MIJIN_TEST
-        );
-        const transactionURI = TransactionURI.fromTransaction(URIFormat.serialized, transaction);
-        expect(transactionURI.data).to.deep.equal(transaction.serialize());
-    });
-
-    it('be created from transaction (DTO)', () => {
-        const transaction = TransferTransaction.create(
-            Deadline.create(),
-            Address.createFromRawAddress('SAGYCE-QM5SK2-TGFUC5-Z5GZJR-ATKTBS-UQQMMH-KW5B'),
-            [NetworkCurrencyMosaic.createRelative(10)],
-            PlainMessage.create('hello'),
-            NetworkType.MIJIN_TEST
-        );
-        const transactionURI = TransactionURI.fromTransaction(URIFormat.DTO, transaction);
-        expect(transactionURI.data).to.deep.equal(transaction.toJSON());
-    });
-
     it('be created from URI (payload)', () => {
-        const serializedTransaction = 'AA000000000000000000000000000000000000000000000000000000000000000000000000000' +
-            '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000' +
-            '00000000000000000000039054410000000000000000243F383E16000000900D81120CEC95A998B41773D3653104D530CA9083' +
-            '18755BA10600010068656C6C6F44B262C46CEABB858096980000000000';
+        const serializedTransaction = 'AA00000000000000000000000000000000000000000000000000000000000000000000000000000' +
+            '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000' +
+            '000000000000000003905441000000000000000007AF3B3E16000000900D81120CEC95A998B41773D3653104D530CA908318755BA' +
+            '10600010068656C6C6F44B262C46CEABB858096980000000000';
         const URI = 'web+nem://transaction&data=' + serializedTransaction + '&chainId=test' +
             '&endpoint=http://localhost:3000';
         const transactionURI = TransactionURI.fromURI(URI);
+        transactionURI.toTransaction();
         expect(transactionURI.build()).to.deep.equal(URI);
     });
 
@@ -102,9 +79,15 @@ describe('TransactionURI should', () => {
         };
         const URI = 'web+nem://transaction&data=' + JSON.stringify(DTOTransaction);
         const transactionURI = TransactionURI.fromURI(URI);
+        transactionURI.toTransaction();
         expect(transactionURI.build()).to.deep.equal(URI);
     });
 
+    it('not be created from URI when data param is missing', () => {
+        expect(function () {
+            TransactionURI.fromURI('web+nem://transaction?chain_id=test')
+        }).to.throw('Invalid URI: data parameter missing');
+    });
 
     it('build the URI from serialized data', () => {
         const serialized = TransferTransaction.create(
@@ -139,7 +122,7 @@ describe('TransactionURI should', () => {
             [new Mosaic(new MosaicId('7cdf3b117a3c40cc'), UInt64.fromUint(1000000))],
             PlainMessage.create('hello'),
             NetworkType.MIJIN_TEST
-        )
+        );
         const transactionURI = new TransactionURI(transaction.serialize());
         expect(transactionURI.toTransaction()).to.deep.equal(transaction);
     });
@@ -155,5 +138,4 @@ describe('TransactionURI should', () => {
         const transactionURI = new TransactionURI(transaction.toJSON());
         expect(transactionURI.toTransaction()).excluding('signature').to.deep.equal(transaction);
     });
-
 });

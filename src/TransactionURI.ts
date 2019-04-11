@@ -15,7 +15,6 @@
  */
 
 import {URIScheme} from "./URIScheme";
-import {URIFormat} from "./URIFormat";
 import {Transaction, TransactionMapping} from "nem2-sdk";
 
 export class TransactionURI implements URIScheme {
@@ -36,21 +35,6 @@ export class TransactionURI implements URIScheme {
     }
 
     /**
-     * Static constructor function from transaction
-     * @param   format   {URIFormat}
-     * @param   transaction   {Transaction}
-     * @param   chainId  {string}
-     * @param   endpoint {string}
-     * @returns {TransactionURI}
-     */
-    static fromTransaction(format: URIFormat, transaction: Transaction, chainId?: string, endpoint?: string) {
-        if (format === URIFormat.DTO) {
-            return new TransactionURI(transaction.toJSON(), chainId, endpoint);
-        }
-        return new TransactionURI(transaction.serialize(), chainId, endpoint);
-    }
-
-    /**
      * Static constructor function from URI
      * @param   uri   string
      * @returns {TransactionURI}
@@ -58,7 +42,7 @@ export class TransactionURI implements URIScheme {
     static fromURI(uri: string) {
         const params = new URLSearchParams(uri);
         if (!params.has('data')) {
-            throw Error('The URI is not a valid.');
+            throw Error('Invalid URI: data parameter missing');
         }
         let data;
         try {

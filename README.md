@@ -19,19 +19,17 @@ This is a PoC to validate the proposed [NIP4 Transaction URI Scheme](https://git
 ### Transaction to URI
 
 ```typescript
-
     import { TransferTransaction, Deadline, Address, PlainMessage, NetworkCurrencyMosaic, NetworkType } from 'nem2-sdk';
     import { TransactionURI, URIFormat } from 'nem2-uri-scheme';
 
-    const transferTransaction = TransferTransaction.create(
+    const serializedTransaction = TransferTransaction.create(
         Deadline.create(),
         Address.createFromRawAddress('SAGYCE-QM5SK2-TGFUC5-Z5GZJR-ATKTBS-UQQMMH-KW5B'),
         [NetworkCurrencyMosaic.createRelative(10)],
         PlainMessage.create('hello'),
         NetworkType.MIJIN_TEST
-    );
-    const transactionURI = TransactionURI.fromTransaction(URIFormat.serialized, transferTransaction, 'test','http://localhost:3000').build();
-    console.log(transactionURI);
+    ).serialize();
+    const transactionURI = new TransactionURI(serializedTransaction,'test','http://localhost:3000').build();
 ```
 
 
@@ -39,7 +37,7 @@ This is a PoC to validate the proposed [NIP4 Transaction URI Scheme](https://git
 
 ```typescript
     import { TransactionURI } from 'nem2-uri-scheme';
-        const serializedTransaction= 'AA000000000000000000000000000000000000000000000000000000000000000000000000000' +
+        const serializedTransaction = 'AA000000000000000000000000000000000000000000000000000000000000000000000000000' +
             '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000' +
             '00000000000000000000039054410000000000000000243F383E16000000900D81120CEC95A998B41773D3653104D530CA9083' +
             '18755BA10600010068656C6C6F44B262C46CEABB858096980000000000';
