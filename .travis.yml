@@ -10,11 +10,3 @@ before_script:
 - npm run build
 script:
 - npm run test:coverage
-deploy:
-  provider: npm
-  email: $NPM_EMAIL
-  api_key:
-    secure: $NPM_API_KEY
-  on:
-    tags: true
-    repo: dgarcia360/nem2-uri-scheme
