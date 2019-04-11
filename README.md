@@ -21,7 +21,7 @@ This is a PoC to validate the proposed [NIP4 Transaction URI Scheme](https://git
 ```typescript
 
     import { TransferTransaction, Deadline, Address, PlainMessage, NetworkCurrencyMosaic, NetworkType } from 'nem2-sdk';
-    import { TransactionURI, URIFormat } from 'nem2-sdk';
+    import { TransactionURI, URIFormat } from 'nem2-uri-scheme';
 
     const transferTransaction = TransferTransaction.create(
         Deadline.create(),
@@ -38,7 +38,7 @@ This is a PoC to validate the proposed [NIP4 Transaction URI Scheme](https://git
 
 ```typescript
     import { TransferTransaction, Deadline, Address, PlainMessage, NetworkCurrencyMosaic, NetworkType } from 'nem2-sdk';
-    import { TransactionURI, URIFormat } from 'nem2-sdk';
+    import { TransactionURI, URIFormat } from 'nem2-uri-scheme';
 
     const serializedTransaction = TransferTransaction.create(
         Deadline.create(),
@@ -55,7 +55,7 @@ This is a PoC to validate the proposed [NIP4 Transaction URI Scheme](https://git
 
 ```typescript
     import { TransferTransaction, Deadline, Address, PlainMessage, NetworkCurrencyMosaic, NetworkType } from 'nem2-sdk';
-    import { TransactionURI, URIFormat } from 'nem2-sdk';
+    import { TransactionURI, URIFormat } from 'nem2-uri-scheme';
 
     const transactionDTO = TransferTransaction.create(
         Deadline.create(),
