@@ -26,20 +26,13 @@ export class TransactionURI implements URIScheme {
     /**
      * Create a TransactionURI.
      *
-     * @param   format   {URIFormat}
      * @param   data   {object|string}
      * @param   chainId  {string}
      * @param   endpoint {string}
      */
-    constructor(public readonly format: URIFormat,
-                public readonly data: object | string,
+    constructor(public readonly data: object | string,
                 public readonly chainId?: string,
                 public readonly endpoint?: string) {
-
-        if ((format === URIFormat.serialized && typeof data !== "string") ||
-            (format === URIFormat.DTO && typeof data !== "object")) {
-            throw Error('The format and data passed do not match.');
-        }
     }
 
     /**
@@ -51,31 +44,56 @@ export class TransactionURI implements URIScheme {
      * @returns {TransactionURI}
      */
     static fromTransaction(format: URIFormat, transaction: Transaction, chainId?: string, endpoint?: string) {
-        if (format === URIFormat.serialized) {
-            return new TransactionURI(URIFormat.serialized, transaction.serialize(), chainId, endpoint);
+        if (format === URIFormat.DTO) {
+            return new TransactionURI(transaction.toJSON(), chainId, endpoint);
         }
-        return new TransactionURI(URIFormat.DTO, transaction.toJSON(), chainId, endpoint);
+        return new TransactionURI(transaction.serialize(), chainId, endpoint);
     }
+
+    /**
+     * Static constructor function from URI
+     * @param   uri   string
+     * @returns {TransactionURI}
+     */
+    static fromURI(uri: string) {
+        const params = new URLSearchParams(uri);
+        if (!params.has('data')) {
+            throw Error('The URI is not a valid.');
+        }
+        let data;
+        try {
+            data = JSON.parse(params.get('data') || '');
+        }
+        catch (e) {
+            data = params.get('data') || '';
+        }
+        return new TransactionURI(
+            data,
+            params.get('chainId') || undefined,
+            params.get('endpoint') || undefined
+        );
+    }
+
 
     /**
      * Turn TransactionURI into Transaction object
      * @returns {Transaction}
      */
     toTransaction(): Transaction {
-        if (this.format === URIFormat.serialized) {
-            return TransactionMapping.createFromPayload(<string>this.data);
+        if (typeof this.data == 'string') {
+            return TransactionMapping.createFromPayload(this.data);
         }
-        return TransactionMapping.createFromDTO(<object>this.data);
+        return TransactionMapping.createFromDTO(this.data);
     }
 
     /**
      * Build the URI
      */
     build(): string {
+        const data = typeof this.data === 'object' ? JSON.stringify(this.data) : this.data;
         const base = TransactionURI.PROTOCOL
             + TransactionURI.ACTION
-            + '?format=' + this.format
-            + '&data=' + this.data.toString();
+            + '&data=' + data;
         const chainId = this.chainId ? '&chainId=' + this.chainId : '';
         const endpoint = this.endpoint ? '&endpoint=' + this.endpoint : '';
         return base + chainId + endpoint;

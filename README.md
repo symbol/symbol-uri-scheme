@@ -14,9 +14,9 @@ This is a PoC to validate the proposed [NIP4 Transaction URI Scheme](https://git
 
 ``npm install nem2-uri-scheme``
 
-## Examples
+## Usage
 
-### Building a URI from a transaction
+### Transaction to URI
 
 ```typescript
 
@@ -34,46 +34,22 @@ This is a PoC to validate the proposed [NIP4 Transaction URI Scheme](https://git
     console.log(transactionURI);
 ```
 
-### Building a URI from a serialized transaction
+
+### URI to Transaction
 
 ```typescript
-    import { TransferTransaction, Deadline, Address, PlainMessage, NetworkCurrencyMosaic, NetworkType } from 'nem2-sdk';
-    import { TransactionURI, URIFormat } from 'nem2-uri-scheme';
-
-    const serializedTransaction = TransferTransaction.create(
-        Deadline.create(),
-        Address.createFromRawAddress('SAGYCE-QM5SK2-TGFUC5-Z5GZJR-ATKTBS-UQQMMH-KW5B'),
-        [NetworkCurrencyMosaic.createRelative(10)],
-        PlainMessage.create('hello'),
-        NetworkType.MIJIN_TEST
-    ).serialized();
-    const transactionURI = new TransactionURI(URIFormat.serialized, serializedTransaction, 'test', 'http://localhost:3000').build();
-    console.log(transactionURI);
+    import { TransactionURI } from 'nem2-uri-scheme';
+        const serializedTransaction= 'AA000000000000000000000000000000000000000000000000000000000000000000000000000' +
+            '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000' +
+            '00000000000000000000039054410000000000000000243F383E16000000900D81120CEC95A998B41773D3653104D530CA9083' +
+            '18755BA10600010068656C6C6F44B262C46CEABB858096980000000000';
+        const URI = 'web+nem://transaction&data='+ serializedTransaction + '&chainId=test' +
+            '&endpoint=http://localhost:3000';
+        const transactionURI = TransactionURI.fromURI(URI);
+        const transaction = transactionURI.toTransaction();
 ```
 
-### Building a URI from a DTO
-
-```typescript
-    import { TransferTransaction, Deadline, Address, PlainMessage, NetworkCurrencyMosaic, NetworkType } from 'nem2-sdk';
-    import { TransactionURI, URIFormat } from 'nem2-uri-scheme';
-
-    const transactionDTO = TransferTransaction.create(
-        Deadline.create(),
-        Address.createFromRawAddress('SAGYCE-QM5SK2-TGFUC5-Z5GZJR-ATKTBS-UQQMMH-KW5B'),
-        [NetworkCurrencyMosaic.createRelative(10)],
-        PlainMessage.create('hello'),
-        NetworkType.MIJIN_TEST
-    ).toJSON();
-    const transactionURI = new TransactionURI(URIFormat.DTO, transactionDTO, 'test','http://localhost:3000').build();
-    console.log(transactionURI);
-```
-
-### Creating a transaction from a URI
-
-```typescript
-    const transactionURI = new TransactionURI(URIFormat.serialized, serializedTransaction).build();
-    const transaction = transactionURI.toTransaction();
-```
+Find advanced examples in the [docs](https://github.com/dgarcia360/nem2-uri-scheme/wiki/).
 
 ## License
 

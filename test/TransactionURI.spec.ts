@@ -35,28 +35,14 @@ use(chaiExclude);
 describe('TransactionURI should', () => {
 
     it('be created with data and format', () => {
-        const transactionURIDTO = new TransactionURI(URIFormat.DTO, {});
-        const transactionURISerialized = new TransactionURI(URIFormat.serialized, '');
-        expect(transactionURIDTO.format).to.deep.equal(URIFormat.DTO);
-        expect(transactionURIDTO.data).to.deep.equal({});
-        expect(transactionURISerialized.format).to.deep.equal(URIFormat.serialized);
-        expect(transactionURISerialized.data).to.deep.equal('');
-    });
-
-    it('only allow valid data and format', () => {
-        expect(function () {
-            new TransactionURI(URIFormat.DTO, '')
-        })
-            .to.throw('The format and data passed do not match.');
-        expect((function () {
-            new TransactionURI(URIFormat.serialized, {})
-        }))
-            .to.throw('The format and data passed do not match.');
+        const transactionURIDTO = new TransactionURI({'foo': 'bar'});
+        const transactionURISerialized = new TransactionURI('foo');
+        expect(transactionURIDTO.data).to.deep.equal({'foo': 'bar'});
+        expect(transactionURISerialized.data).to.deep.equal('foo');
     });
 
     it('accept endpoint and chainId parameters', () => {
-        const transactionURI = new TransactionURI(
-            URIFormat.DTO, {},
+        const transactionURI = new TransactionURI({},
             'local-network',
             'http://localhost:3000');
         expect(transactionURI.endpoint).to.deep.equal('http://localhost:3000');
@@ -87,6 +73,39 @@ describe('TransactionURI should', () => {
         expect(transactionURI.data).to.deep.equal(transaction.toJSON());
     });
 
+    it('be created from URI (payload)', () => {
+        const serializedTransaction = 'AA000000000000000000000000000000000000000000000000000000000000000000000000000' +
+            '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000' +
+            '00000000000000000000039054410000000000000000243F383E16000000900D81120CEC95A998B41773D3653104D530CA9083' +
+            '18755BA10600010068656C6C6F44B262C46CEABB858096980000000000';
+        const URI = 'web+nem://transaction&data=' + serializedTransaction + '&chainId=test' +
+            '&endpoint=http://localhost:3000';
+        const transactionURI = TransactionURI.fromURI(URI);
+        expect(transactionURI.build()).to.deep.equal(URI);
+    });
+
+
+    it('be created from URI (DTO)', () => {
+        const DTOTransaction = {
+            transaction:
+                {
+                    type: 16724,
+                    networkType: 144,
+                    version: 36867,
+                    maxFee: [0, 0],
+                    deadline: [1043946072, 22],
+                    signature: '',
+                    recipient: {address: 'SAGYCEQM5SK2TGFUC5Z5GZJRATKTBSUQQMMHKW5B', networkType: 144},
+                    mosaics: [{amount: [10000000, 0], id: [3294802500, 2243684972]}],
+                    message: {type: 0, payload: 'hello'}
+                }
+        };
+        const URI = 'web+nem://transaction&data=' + JSON.stringify(DTOTransaction);
+        const transactionURI = TransactionURI.fromURI(URI);
+        expect(transactionURI.build()).to.deep.equal(URI);
+    });
+
+
     it('build the URI from serialized data', () => {
         const serialized = TransferTransaction.create(
             Deadline.create(),
@@ -95,9 +114,8 @@ describe('TransactionURI should', () => {
             PlainMessage.create('hello'),
             NetworkType.MIJIN_TEST
         ).serialize();
-        const transactionURI = new TransactionURI(URIFormat.serialized, serialized);
-        expect(transactionURI.build()).to.deep.equal('web+nem://transaction?format=serialized' +
-            '&data=' + serialized);
+        const transactionURI = new TransactionURI(serialized);
+        expect(transactionURI.build()).to.deep.equal('web+nem://transaction&data=' + serialized);
     });
 
     it('build the URI from DTO', () => {
@@ -108,11 +126,10 @@ describe('TransactionURI should', () => {
             PlainMessage.create('hello'),
             NetworkType.MIJIN_TEST
         ).toJSON();
-        const transactionURI = new TransactionURI(URIFormat.DTO, transactionDTO, 'test',
+        const transactionURI = new TransactionURI(transactionDTO, 'test',
             'http://localhost:3000');
-        expect(transactionURI.build()).to.deep.equal('web+nem://transaction?format=DTO' +
-            '&data=' + transactionDTO.toString()
-            + '&chainId=test&endpoint=http://localhost:3000');
+        expect(transactionURI.build()).to.deep.equal('web+nem://transaction&data='
+            + JSON.stringify(transactionDTO) + '&chainId=test&endpoint=http://localhost:3000');
     });
 
     it('create a transaction (serialized) ', () => {
@@ -123,7 +140,7 @@ describe('TransactionURI should', () => {
             PlainMessage.create('hello'),
             NetworkType.MIJIN_TEST
         )
-        const transactionURI = new TransactionURI(URIFormat.serialized, transaction.serialize());
+        const transactionURI = new TransactionURI(transaction.serialize());
         expect(transactionURI.toTransaction()).to.deep.equal(transaction);
     });
 
@@ -135,7 +152,8 @@ describe('TransactionURI should', () => {
             PlainMessage.create('hello'),
             NetworkType.MIJIN_TEST
         );
-        const transactionURI = new TransactionURI(URIFormat.DTO, transaction.toJSON());
+        const transactionURI = new TransactionURI(transaction.toJSON());
         expect(transactionURI.toTransaction()).excluding('signature').to.deep.equal(transaction);
     });
+
 });
