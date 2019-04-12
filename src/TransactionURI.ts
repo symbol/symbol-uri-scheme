@@ -15,7 +15,6 @@
  */
 
 import {URIScheme} from "./URIScheme";
-import {URLSearchParams} from "url";
 import {Transaction, TransactionMapping} from "nem2-sdk";
 
 export class TransactionURI implements URIScheme {
@@ -41,21 +40,27 @@ export class TransactionURI implements URIScheme {
      * @returns {TransactionURI}
      */
     static fromURI(uri: string) {
-        const params = new URLSearchParams(uri);
-        if (!params.has('data')) {
+        
+        const params =
+        (uri.substring((this.PROTOCOL + this.ACTION).length+1, uri.length))
+        .split('&')
+        .map((detail) => 
+        detail.substring(detail.indexOf('=')+1, detail.length));
+
+        if (!uri.includes('data')) {
             throw Error('Invalid URI: data parameter missing');
         }
         let data;
         try {
-            data = JSON.parse(params.get('data') || '');
+            data = JSON.parse(params[0] || '');
         }
         catch (e) {
-            data = params.get('data') || '';
+            data = params[0] || '';
         }
         return new TransactionURI(
             data,
-            params.get('chainId') || undefined,
-            params.get('endpoint') || undefined
+            params[1]|| undefined,
+            params[2] || undefined
         );
     }
 
