@@ -68,8 +68,8 @@ describe('TransactionURI should', () => {
             '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000' +
             '000000000000000003905441000000000000000007AF3B3E16000000900D81120CEC95A998B41773D3653104D530CA908318755BA' +
             '10600010068656C6C6F44B262C46CEABB858096980000000000';
-        const URI = 'web+nem://transaction&data=' + serializedTransaction + '&chainId=test' +
-            '&endpoint=http://localhost:3000&webhook=http://someexternalserver.com/webhook';
+        const URI = 'web+nem://transaction&data=' + serializedTransaction +
+            '&webhook=http://someexternalserver.com/webhook';
         const transactionURI = TransactionURI.fromURI(URI);
         transactionURI.toTransaction();
         expect(transactionURI.build()).to.deep.equal(URI);
