@@ -8,7 +8,7 @@
 
 NEM URI Scheme generator to serve transactions ready to be signed.
 
-This is a PoC to validate the proposed [NIP4 Transaction URI Scheme](https://github.com/nemtech/NIP/issues/6). When stable, the repository will be moved to the [nemtech](https://github.com/nemtech) organization.
+This is a PoC to validate the proposed [NIP2 Transaction URI Scheme](https://github.com/nemtech/NIP/issues/6). When stable, the repository will be moved to the [nemtech](https://github.com/nemtech) organization.
 
 ## Installation
 
