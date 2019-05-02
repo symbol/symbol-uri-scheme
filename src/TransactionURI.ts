@@ -16,12 +16,12 @@
 
 import {URIScheme} from "./URIScheme";
 import {Transaction, TransactionMapping} from "nem2-sdk";
-import {URLSearchParams} from "url";
+const parse = require('url-parse');
 
 export class TransactionURI implements URIScheme {
 
-    public static readonly PROTOCOL = "web+nem://";
-    public static readonly ACTION = "transaction";
+    public static readonly PROTOCOL: string = "web+nem://";
+    public static readonly ACTION: string = "transaction";
 
     /**
      * Create a TransactionURI.
@@ -43,21 +43,21 @@ export class TransactionURI implements URIScheme {
      * @returns {TransactionURI}
      */
     static fromURI(uri: string) {
-        const params = new URLSearchParams(uri);
-        if (!params.has('data')) {
+        const url = parse(uri, true);
+        if (!url.query.data) {
             throw Error('Invalid URI: data parameter missing');
         }
         let data;
         try {
-            data = JSON.parse(params.get('data') || '');
+            data = JSON.parse(url.query.data || '');
         } catch (e) {
-            data = params.get('data') || '';
+            data = url.query.data || '';
         }
         return new TransactionURI(
             data,
-            params.get('chainId') || undefined,
-            params.get('endpoint') || undefined,
-            params.get('webhook') || undefined
+            url.query.chainId,
+            url.query.endpoint,
+            url.query.webhook
         );
     }
 
@@ -80,7 +80,7 @@ export class TransactionURI implements URIScheme {
         const data = typeof this.data === 'object' ? JSON.stringify(this.data) : this.data;
         const base = TransactionURI.PROTOCOL
             + TransactionURI.ACTION
-            + '&data=' + data;
+            + '?data=' + data;
         const chainId = this.chainId ? '&chainId=' + this.chainId : '';
         const endpoint = this.endpoint ? '&endpoint=' + this.endpoint : '';
         const webhook = this.webhook ? '&webhook=' + this.webhook : '';

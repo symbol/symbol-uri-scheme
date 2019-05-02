@@ -56,7 +56,7 @@ describe('TransactionURI should', () => {
             '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000' +
             '000000000000000003905441000000000000000007AF3B3E16000000900D81120CEC95A998B41773D3653104D530CA908318755BA' +
             '10600010068656C6C6F44B262C46CEABB858096980000000000';
-        const URI = 'web+nem://transaction&data=' + serializedTransaction + '&chainId=test' +
+        const URI = 'web+nem://transaction?data=' + serializedTransaction + '&chainId=test' +
             '&endpoint=http://localhost:3000';
         const transactionURI = TransactionURI.fromURI(URI);
         transactionURI.toTransaction();
@@ -68,7 +68,7 @@ describe('TransactionURI should', () => {
             '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000' +
             '000000000000000003905441000000000000000007AF3B3E16000000900D81120CEC95A998B41773D3653104D530CA908318755BA' +
             '10600010068656C6C6F44B262C46CEABB858096980000000000';
-        const URI = 'web+nem://transaction&data=' + serializedTransaction +
+        const URI = 'web+nem://transaction?data=' + serializedTransaction +
             '&webhook=http://someexternalserver.com/webhook';
         const transactionURI = TransactionURI.fromURI(URI);
         transactionURI.toTransaction();
@@ -90,7 +90,7 @@ describe('TransactionURI should', () => {
                     message: {type: 0, payload: 'hello'}
                 }
         };
-        const URI = 'web+nem://transaction&data=' + JSON.stringify(DTOTransaction);
+        const URI = 'web+nem://transaction?data=' + JSON.stringify(DTOTransaction);
         const transactionURI = TransactionURI.fromURI(URI);
         transactionURI.toTransaction();
         expect(transactionURI.build()).to.deep.equal(URI);
@@ -111,7 +111,7 @@ describe('TransactionURI should', () => {
             NetworkType.MIJIN_TEST
         ).serialize();
         const transactionURI = new TransactionURI(serialized);
-        expect(transactionURI.build()).to.deep.equal('web+nem://transaction&data=' + serialized);
+        expect(transactionURI.build()).to.deep.equal('web+nem://transaction?data=' + serialized);
     });
 
     it('build the URI from DTO', () => {
@@ -124,7 +124,7 @@ describe('TransactionURI should', () => {
         ).toJSON();
         const transactionURI = new TransactionURI(transactionDTO, 'test',
             'http://localhost:3000');
-        expect(transactionURI.build()).to.deep.equal('web+nem://transaction&data='
+        expect(transactionURI.build()).to.deep.equal('web+nem://transaction?data='
             + JSON.stringify(transactionDTO) + '&chainId=test&endpoint=http://localhost:3000');
     });
 
