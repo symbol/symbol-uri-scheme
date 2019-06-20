@@ -42,7 +42,7 @@ import { TransactionURI } from 'nem2-uri-scheme';
         '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000' +
         '000000000000000003905441000000000000000007AF3B3E16000000900D81120CEC95A998B41773D3653104D530CA908318755BA' +
         '10600010068656C6C6F44B262C46CEABB858096980000000000';
-    const URI = 'web+nem://transaction?data='+ serializedTransaction + '&chainId=test' +
+    const URI = 'web+nem://transaction?data='+ serializedTransaction + '&generationHash=test' +
         '&endpoint=http://localhost:3000';
     const transactionURI = TransactionURI.fromURI(URI);
     const transaction = transactionURI.toTransaction();
