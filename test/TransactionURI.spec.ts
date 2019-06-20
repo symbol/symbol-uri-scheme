@@ -41,13 +41,13 @@ describe('TransactionURI should', () => {
         expect(transactionURISerialized.data).to.deep.equal('foo');
     });
 
-    it('accept endpoint, chainId and webhook parameters', () => {
+    it('accept endpoint, generationHash and webhook parameters', () => {
         const transactionURI = new TransactionURI({},
             'local-network',
             'http://localhost:3000',
             'http://someexternalserver.com/webhook');
         expect(transactionURI.endpoint).to.deep.equal('http://localhost:3000');
-        expect(transactionURI.chainId).to.deep.equal('local-network');
+        expect(transactionURI.generationHash).to.deep.equal('local-network');
         expect(transactionURI.webhook).to.deep.equal('http://someexternalserver.com/webhook');
     });
 
@@ -56,7 +56,7 @@ describe('TransactionURI should', () => {
             '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000' +
             '000000000000000003905441000000000000000007AF3B3E16000000900D81120CEC95A998B41773D3653104D530CA908318755BA' +
             '10600010068656C6C6F44B262C46CEABB858096980000000000';
-        const URI = 'web+nem://transaction?data=' + serializedTransaction + '&chainId=test' +
+        const URI = 'web+nem://transaction?data=' + serializedTransaction + '&generationHash=test' +
             '&endpoint=http://localhost:3000';
         const transactionURI = TransactionURI.fromURI(URI);
         transactionURI.toTransaction();
@@ -125,7 +125,7 @@ describe('TransactionURI should', () => {
         const transactionURI = new TransactionURI(transactionDTO, 'test',
             'http://localhost:3000');
         expect(transactionURI.build()).to.deep.equal('web+nem://transaction?data='
-            + JSON.stringify(transactionDTO) + '&chainId=test&endpoint=http://localhost:3000');
+            + JSON.stringify(transactionDTO) + '&generationHash=test&endpoint=http://localhost:3000');
     });
 
     it('create a transaction (serialized) ', () => {

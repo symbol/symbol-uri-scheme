@@ -27,12 +27,12 @@ export class TransactionURI implements URIScheme {
      * Create a TransactionURI.
      *
      * @param   data   {object|string}
-     * @param   chainId  {string}
+     * @param   generationHash  {string}
      * @param   endpoint {string}
      * @param   webhook {string}
      */
     constructor(public readonly data: object | string,
-                public readonly chainId?: string,
+                public readonly generationHash?: string,
                 public readonly endpoint?: string,
                 public readonly webhook?: string) {
     }
@@ -55,7 +55,7 @@ export class TransactionURI implements URIScheme {
         }
         return new TransactionURI(
             data,
-            url.query.chainId,
+            url.query.generationHash,
             url.query.endpoint,
             url.query.webhook
         );
@@ -81,9 +81,9 @@ export class TransactionURI implements URIScheme {
         const base = TransactionURI.PROTOCOL
             + TransactionURI.ACTION
             + '?data=' + data;
-        const chainId = this.chainId ? '&chainId=' + this.chainId : '';
+        const generationHash = this.generationHash ? '&generationHash=' + this.generationHash : '';
         const endpoint = this.endpoint ? '&endpoint=' + this.endpoint : '';
         const webhook = this.webhook ? '&webhook=' + this.webhook : '';
-        return base + chainId + endpoint + webhook;
+        return base + generationHash + endpoint + webhook;
     }
 }
