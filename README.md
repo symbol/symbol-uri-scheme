@@ -1,7 +1,7 @@
 # nem2-uri-scheme
 
 [![npm version](https://badge.fury.io/js/nem2-uri-scheme.svg)](https://badge.fury.io/js/nem2-uri-scheme)
-[![Build Status](https://travis-ci.org/dgarcia360/nem2-uri-scheme.svg?branch=master)](https://travis-ci.org/dgarcia360/nem2-uri-scheme)
+[![Build Status](https://travis-ci.org/nemfoundation/nem2-uri-scheme.svg?branch=master)](https://travis-ci.org/dgarcia360/nem2-uri-scheme)
 [![Slack](https://img.shields.io/badge/chat-on%20slack-green.svg)](https://nem2.slack.com/messages/CB0UU89GS//)
 
 :warning: This library is experimental, use at your own risk.
