@@ -2,7 +2,6 @@
   "name": "nem2-uri-scheme",
   "version": "0.3.3",
   "description": "nem2 library to handle uri scheme",
-  "author": "",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "directories": {
@@ -36,13 +35,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dgarcia360/nem2-uri-schema.git"
+    "url": "git+https://github.com/nemfoundation/nem2-uri-schema.git"
   },
   "license": "Apache 2.0",
+  "contributors": [
+    {
+      "name": "David",
+      "email": "david@nem.foundation"
+    }
+  ],
   "bugs": {
-    "url": "https://github.com/dgarcia360/nem2-uri-schema/issues"
+    "url": "https://github.com/nemfoundation/nem2-uri-schema/issues"
   },
-  "homepage": "https://github.com/dgarcia360/nem2-uri-schema#readme",
+  "homepage": "https://github.com/nemfoundation/nem2-uri-schema#readme",
   "nyc": {
     "exclude": [
       "**/*.spec.js"
