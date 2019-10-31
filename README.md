@@ -1,7 +1,7 @@
 # nem2-uri-scheme
 
 [![npm version](https://badge.fury.io/js/nem2-uri-scheme.svg)](https://badge.fury.io/js/nem2-uri-scheme)
-[![Build Status](https://travis-ci.org/dgarcia360/nem2-uri-scheme.svg?branch=master)](https://travis-ci.org/dgarcia360/nem2-uri-scheme)
+[![Build Status](https://travis-ci.org/nemfoundation/nem2-uri-scheme.svg?branch=master)](https://travis-ci.org/dgarcia360/nem2-uri-scheme)
 [![Slack](https://img.shields.io/badge/chat-on%20slack-green.svg)](https://nem2.slack.com/messages/CB0UU89GS//)
 
 :warning: This library is experimental, use at your own risk.
@@ -20,7 +20,7 @@ This is a PoC to validate the proposed [NIP2 Transaction URI Scheme](https://git
 
 ```typescript
 import { TransferTransaction, Deadline, Address, PlainMessage, NetworkCurrencyMosaic, NetworkType } from 'nem2-sdk';
-import { TransactionURI, URIFormat } from 'nem2-uri-scheme';
+import { TransactionURI} from 'nem2-uri-scheme';
 
 const serializedTransaction = TransferTransaction.create(
     Deadline.create(),
@@ -29,7 +29,8 @@ const serializedTransaction = TransferTransaction.create(
     PlainMessage.create('hello'),
     NetworkType.MIJIN_TEST
 ).serialize();
-const transactionURI = new TransactionURI(serializedTransaction,'test','http://localhost:3000').build();
+const transactionURI = new TransactionURI(serializedTransaction,'test','http://localhost:3000');
+console.log(transactionURI.build());
 ```
 
 
@@ -47,8 +48,6 @@ import { TransactionURI } from 'nem2-uri-scheme';
     const transactionURI = TransactionURI.fromURI(URI);
     const transaction = transactionURI.toTransaction();
 ```
-
-Find advanced examples in the [docs](https://github.com/dgarcia360/nem2-uri-scheme/wiki/).
 
 ## License
 
