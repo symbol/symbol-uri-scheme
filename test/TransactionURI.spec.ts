@@ -82,11 +82,11 @@ describe('TransactionURI should', () => {
                     type: 16724,
                     networkType: 144,
                     version: 36867,
-                    maxFee: [0, 0],
-                    deadline: [1043946072, 22],
+                    maxFee: '0',
+                    deadline: '1',
                     signature: '',
-                    recipient: {address: 'SAGYCEQM5SK2TGFUC5Z5GZJRATKTBSUQQMMHKW5B', networkType: 144},
-                    mosaics: [{amount: [10000000, 0], id: [3294802500, 2243684972]}],
+                    recipientAddress: {address: 'SAGYCEQM5SK2TGFUC5Z5GZJRATKTBSUQQMMHKW5B', networkType: 144},
+                    mosaics: [{amount: '10000000', id: '7cdf3b117a3c40cc'}],
                     message: {type: 0, payload: 'hello'}
                 }
         };
@@ -132,7 +132,7 @@ describe('TransactionURI should', () => {
         const transaction = TransferTransaction.create(
             Deadline.create(),
             Address.createFromRawAddress('SAGYCE-QM5SK2-TGFUC5-Z5GZJR-ATKTBS-UQQMMH-KW5B'),
-            [new Mosaic(new MosaicId('7cdf3b117a3c40cc'), UInt64.fromUint(1000000))],
+            [new Mosaic(new MosaicId('7cdf3b117a3c40cc'), UInt64.fromUint(10000000))],
             PlainMessage.create('hello'),
             NetworkType.MIJIN_TEST
         );
@@ -144,7 +144,7 @@ describe('TransactionURI should', () => {
         const transaction = TransferTransaction.create(
             Deadline.create(),
             Address.createFromRawAddress('SAGYCE-QM5SK2-TGFUC5-Z5GZJR-ATKTBS-UQQMMH-KW5B'),
-            [new Mosaic(new MosaicId('acdf3b117a3c40cc'), UInt64.fromUint(10))],
+            [new Mosaic(new MosaicId('acdf3b117a3c40cc'), UInt64.fromUint(10000000))],
             PlainMessage.create('hello'),
             NetworkType.MIJIN_TEST
         );
