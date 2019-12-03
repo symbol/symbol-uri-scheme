@@ -18,35 +18,43 @@ This is a PoC to validate the proposed [NIP2 Transaction URI Scheme](https://git
 
 ### Transaction to URI
 
-```typescript
-import { TransferTransaction, Deadline, Address, PlainMessage, NetworkCurrencyMosaic, NetworkType } from 'nem2-sdk';
-import { TransactionURI} from 'nem2-uri-scheme';
+```ts
+// examples/TransactionToURI.ts
+
+import {Account, Deadline, EmptyMessage, NetworkCurrencyMosaic, NetworkType, TransferTransaction} from 'nem2-sdk';
+import {TransactionURI} from 'nem2-uri-scheme';
 
 const serializedTransaction = TransferTransaction.create(
     Deadline.create(),
-    Address.createFromRawAddress('SAGYCE-QM5SK2-TGFUC5-Z5GZJR-ATKTBS-UQQMMH-KW5B'),
+    Account.generateNewAccount(NetworkType.MIJIN_TEST).address,
     [NetworkCurrencyMosaic.createRelative(10)],
-    PlainMessage.create('hello'),
+    EmptyMessage,
     NetworkType.MIJIN_TEST
 ).serialize();
-const transactionURI = new TransactionURI(serializedTransaction,'test','http://localhost:3000');
+const generationHash = ''; // repalce with network generation hash
+const nodeUrl = 'http://localhost:3000';
+const webhookUrl = 'http://myapp.local/id';
+const transactionURI = new TransactionURI(serializedTransaction, generationHash, nodeUrl, webhookUrl);
 console.log(transactionURI.build());
-```
 
+```
 
 ### URI to Transaction
 
-```typescript
-import { TransactionURI } from 'nem2-uri-scheme';
+```ts
+// examples/URIToTransaction.ts
 
-    const serializedTransaction = 'AA00000000000000000000000000000000000000000000000000000000000000000000000000000' +
-        '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000' +
-        '000000000000000003905441000000000000000007AF3B3E16000000900D81120CEC95A998B41773D3653104D530CA908318755BA' +
-        '10600010068656C6C6F44B262C46CEABB858096980000000000';
-    const URI = 'web+nem://transaction?data='+ serializedTransaction + '&generationHash=test' +
-        '&endpoint=http://localhost:3000';
-    const transactionURI = TransactionURI.fromURI(URI);
-    const transaction = transactionURI.toTransaction();
+import {TransactionURI} from "nem2-uri-scheme";
+
+const serializedTransaction = 'AA00000000000000000000000000000000000000000000000000000000000000000000000000000' +
+    '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000' +
+    '000000000000000003905441000000000000000007AF3B3E16000000900D81120CEC95A998B41773D3653104D530CA908318755BA' +
+    '10600010068656C6C6F44B262C46CEABB858096980000000000';
+const URI = 'web+nem://transaction?data='+ serializedTransaction + '&generationHash=test' +
+    '&endpoint=http://localhost:3000&webhook=http://myapp.local/id';
+const transactionURI = TransactionURI.fromURI(URI);
+const transaction = transactionURI.toTransaction();
+
 ```
 
 ## License
