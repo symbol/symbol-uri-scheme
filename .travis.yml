@@ -10,6 +10,7 @@ before_script:
 script:
 - npm run test:coverage
 - npx embedme README.md --verify
+- tslint --project .
 before_deploy:
 - npx typedoc --out ts-docs src
 - touch ./ts-docs/.nojekyll

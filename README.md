@@ -2,13 +2,19 @@
 
 [![npm version](https://badge.fury.io/js/nem2-uri-scheme.svg)](https://badge.fury.io/js/nem2-uri-scheme)
 [![Build Status](https://travis-ci.org/nemfoundation/nem2-uri-scheme.svg?branch=master)](https://travis-ci.org/nemfoundation/nem2-uri-scheme)
+[![Coverage Status](https://coveralls.io/repos/github/nemfoundation/nem2-uri-scheme/badge.svg?branch=master)](https://coveralls.io/github/nemfoundation/nem2-uri-scheme?branch=master)
 [![Slack](https://img.shields.io/badge/chat-on%20slack-green.svg)](https://nem2.slack.com/messages/CB0UU89GS//)
 
-NEM URI Scheme generator to serve transactions ready to be signed.
+Catapult URI Scheme generator to serve transactions ready to be signed.
 
-This is a PoC to validate the proposed [NIP2 Transaction URI Scheme](https://github.com/nemtech/NIP/issues/6). When stable, the repository will be moved to the [nemtech](https://github.com/nemtech) organization.
+This is a PoC to validate the proposed [NIP2 Transaction URI Scheme](https://github.com/nemtech/NIP/issues/6).
 
 :warning: This library is experimental, use at your own risk.
+
+
+## Important Notes
+
+- [0.3.4](https://www.npmjs.com/package/nem2-uri-scheme) - **Fushicho3 Network Compatibility (catapult-server@0.9.1.1)**
 
 ## Installation
 
@@ -31,7 +37,7 @@ const serializedTransaction = TransferTransaction.create(
     EmptyMessage,
     NetworkType.MIJIN_TEST
 ).serialize();
-const generationHash = ''; // repalce with network generation hash
+const generationHash = ''; // replace with network generation hash
 const nodeUrl = 'http://localhost:3000';
 const webhookUrl = 'http://myapp.local/id';
 const transactionURI = new TransactionURI(serializedTransaction, generationHash, nodeUrl, webhookUrl);

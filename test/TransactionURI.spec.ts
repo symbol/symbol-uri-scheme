@@ -14,10 +14,8 @@
    limitations under the License.
  */
 
-import {expect, use} from "chai";
+import {expect, use} from 'chai';
 import chaiExclude from 'chai-exclude';
-
-import {TransactionURI} from "../index";
 import {
     Address,
     Deadline,
@@ -27,17 +25,18 @@ import {
     NetworkType,
     PlainMessage,
     TransferTransaction,
-    UInt64
-} from "nem2-sdk";
+    UInt64,
+} from 'nem2-sdk';
+import {TransactionURI} from '../index';
 
 use(chaiExclude);
 
 describe('TransactionURI should', () => {
 
     it('be created with data and format', () => {
-        const transactionURIDTO = new TransactionURI({'foo': 'bar'});
+        const transactionURIDTO = new TransactionURI({foo: 'bar'});
         const transactionURISerialized = new TransactionURI('foo');
-        expect(transactionURIDTO.data).to.deep.equal({'foo': 'bar'});
+        expect(transactionURIDTO.data).to.deep.equal({foo: 'bar'});
         expect(transactionURISerialized.data).to.deep.equal('foo');
     });
 
@@ -52,10 +51,12 @@ describe('TransactionURI should', () => {
     });
 
     it('be created from URI (payload)', () => {
-        const serializedTransaction = 'AA00000000000000000000000000000000000000000000000000000000000000000000000000000' +
-            '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000' +
-            '000000000000000003905441000000000000000007AF3B3E16000000900D81120CEC95A998B41773D3653104D530CA908318755BA' +
-            '10600010068656C6C6F44B262C46CEABB858096980000000000';
+        const serializedTransaction = 'B500000000000000406D262D78CE449BC743A2F27FFE05A677A922C6FBA0B6FD' +
+            'F7EE115E01F76A60D2B027C4F8F2826F727ADEC0E6406C2ECC7C67C49FED2DAD' +
+            '973F539046EE8A02CC499067D981CB2EA28D43537D8B3D91E1E0A1F7DA12DB13' +
+            '5C1B9867DB80553B000000000198544140420F000000000015D6FE9001000000' +
+            '99659BB8A2019FE9C60000000000000000000000000000000001050000000000' +
+            '90D69CD255E556C640420F00000000000074657374';
         const URI = 'web+nem://transaction?data=' + serializedTransaction + '&generationHash=test' +
             '&endpoint=http://localhost:3000';
         const transactionURI = TransactionURI.fromURI(URI);
@@ -64,10 +65,12 @@ describe('TransactionURI should', () => {
     });
 
     it('be created from URI with a webhook', () => {
-        const serializedTransaction = 'AA00000000000000000000000000000000000000000000000000000000000000000000000000000' +
-            '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000' +
-            '000000000000000003905441000000000000000007AF3B3E16000000900D81120CEC95A998B41773D3653104D530CA908318755BA' +
-            '10600010068656C6C6F44B262C46CEABB858096980000000000';
+        const serializedTransaction = 'B500000000000000406D262D78CE449BC743A2F27FFE05A677A922C6FBA0B6FD' +
+            'F7EE115E01F76A60D2B027C4F8F2826F727ADEC0E6406C2ECC7C67C49FED2DAD' +
+            '973F539046EE8A02CC499067D981CB2EA28D43537D8B3D91E1E0A1F7DA12DB13' +
+            '5C1B9867DB80553B000000000198544140420F000000000015D6FE9001000000' +
+            '99659BB8A2019FE9C60000000000000000000000000000000001050000000000' +
+            '90D69CD255E556C640420F00000000000074657374';
         const URI = 'web+nem://transaction?data=' + serializedTransaction +
             '&webhook=http://someexternalserver.com/webhook';
         const transactionURI = TransactionURI.fromURI(URI);
@@ -77,8 +80,7 @@ describe('TransactionURI should', () => {
 
     it('be created from URI (DTO)', () => {
         const DTOTransaction = {
-            transaction:
-                {
+            transaction: {
                     type: 16724,
                     networkType: 144,
                     version: 36867,
@@ -87,9 +89,7 @@ describe('TransactionURI should', () => {
                     signature: '',
                     recipientAddress: {address: 'SAGYCEQM5SK2TGFUC5Z5GZJRATKTBSUQQMMHKW5B', networkType: 144},
                     mosaics: [{amount: '10000000', id: '7cdf3b117a3c40cc'}],
-                    message: {type: 0, payload: 'hello'}
-                }
-        };
+                    message: {type: 0, payload: 'hello'}}};
         const URI = 'web+nem://transaction?data=' + JSON.stringify(DTOTransaction);
         const transactionURI = TransactionURI.fromURI(URI);
         transactionURI.toTransaction();
@@ -97,8 +97,8 @@ describe('TransactionURI should', () => {
     });
 
     it('not be created from URI when data param is missing', () => {
-        expect(function () {
-            TransactionURI.fromURI('web+nem://transaction?chain_id=test')
+        expect(() => {
+            TransactionURI.fromURI('web+nem://transaction?chain_id=test');
         }).to.throw('Invalid URI: data parameter missing');
     });
 
@@ -108,8 +108,7 @@ describe('TransactionURI should', () => {
             Address.createFromRawAddress('SAGYCE-QM5SK2-TGFUC5-Z5GZJR-ATKTBS-UQQMMH-KW5B'),
             [NetworkCurrencyMosaic.createRelative(10)],
             PlainMessage.create('hello'),
-            NetworkType.MIJIN_TEST
-        ).serialize();
+            NetworkType.MIJIN_TEST).serialize();
         const transactionURI = new TransactionURI(serialized);
         expect(transactionURI.build()).to.deep.equal('web+nem://transaction?data=' + serialized);
     });
@@ -120,8 +119,7 @@ describe('TransactionURI should', () => {
             Address.createFromRawAddress('SAGYCE-QM5SK2-TGFUC5-Z5GZJR-ATKTBS-UQQMMH-KW5B'),
             [NetworkCurrencyMosaic.createRelative(10)],
             PlainMessage.create('hello'),
-            NetworkType.MIJIN_TEST
-        ).toJSON();
+            NetworkType.MIJIN_TEST).toJSON();
         const transactionURI = new TransactionURI(transactionDTO, 'test',
             'http://localhost:3000');
         expect(transactionURI.build()).to.deep.equal('web+nem://transaction?data='
@@ -134,8 +132,7 @@ describe('TransactionURI should', () => {
             Address.createFromRawAddress('SAGYCE-QM5SK2-TGFUC5-Z5GZJR-ATKTBS-UQQMMH-KW5B'),
             [new Mosaic(new MosaicId('7cdf3b117a3c40cc'), UInt64.fromUint(10000000))],
             PlainMessage.create('hello'),
-            NetworkType.MIJIN_TEST
-        );
+            NetworkType.MIJIN_TEST);
         const transactionURI = new TransactionURI(transaction.serialize());
         expect(transactionURI.toTransaction()).to.deep.equal(transaction);
     });
@@ -146,8 +143,7 @@ describe('TransactionURI should', () => {
             Address.createFromRawAddress('SAGYCE-QM5SK2-TGFUC5-Z5GZJR-ATKTBS-UQQMMH-KW5B'),
             [new Mosaic(new MosaicId('acdf3b117a3c40cc'), UInt64.fromUint(10000000))],
             PlainMessage.create('hello'),
-            NetworkType.MIJIN_TEST
-        );
+            NetworkType.MIJIN_TEST);
         const transactionURI = new TransactionURI(transaction.toJSON());
         expect(transactionURI.toTransaction()).excluding('signature').to.deep.equal(transaction);
     });

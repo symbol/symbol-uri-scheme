@@ -14,7 +14,7 @@
    limitations under the License.
  */
 
-import {Transaction} from "nem2-sdk";
+import {Transaction} from 'nem2-sdk';
 
 /**
  * URI Scheme interface

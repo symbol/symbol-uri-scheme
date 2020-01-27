@@ -14,22 +14,22 @@
    limitations under the License.
  */
 
-import {URIScheme} from "./URIScheme";
-import {Transaction, TransactionMapping} from "nem2-sdk";
-const parse = require('url-parse');
+import {Transaction, TransactionMapping} from 'nem2-sdk';
+import * as parse from 'url-parse';
+import {URIScheme} from './URIScheme';
 
 export class TransactionURI implements URIScheme {
 
-    public static readonly PROTOCOL: string = "web+nem://";
-    public static readonly ACTION: string = "transaction";
+    public static readonly PROTOCOL: string = 'web+nem://';
+    public static readonly ACTION: string = 'transaction';
 
     /**
      * Create a TransactionURI.
      *
-     * @param   data   {object|string}
-     * @param   generationHash  {string}
-     * @param   endpoint {string}
-     * @param   webhook {string}
+     * @param   data - Payload of the transaction.
+     * @param   generationHash  - Network generation hash.
+     * @param   endpoint - Node url to submit the transaction.
+     * @param   webhook - URL to make a POST request after announcing the transaction.
      */
     constructor(public readonly data: object | string,
                 public readonly generationHash?: string,
@@ -39,7 +39,7 @@ export class TransactionURI implements URIScheme {
 
     /**
      * Static constructor function from URI
-     * @param   uri   string
+     * @param   uri - Transaction URI scheme
      * @returns {TransactionURI}
      */
     static fromURI(uri: string) {
@@ -57,17 +57,15 @@ export class TransactionURI implements URIScheme {
             data,
             url.query.generationHash,
             url.query.endpoint,
-            url.query.webhook
-        );
+            url.query.webhook);
     }
-
 
     /**
      * Turn TransactionURI into Transaction object
      * @returns {Transaction}
      */
     toTransaction(): Transaction {
-        if (typeof this.data == 'string') {
+        if (typeof this.data === 'string') {
             return TransactionMapping.createFromPayload(this.data);
         }
         return TransactionMapping.createFromDTO(this.data);
