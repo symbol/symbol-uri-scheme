@@ -1,6 +1,6 @@
 {
   "name": "nem2-uri-scheme",
-  "version": "0.3.4",
+  "version": "0.4.1",
   "description": "nem2 library to handle uri scheme",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",

@@ -31,7 +31,7 @@ export class TransactionURI implements URIScheme {
      * @param   endpoint - Node url to submit the transaction.
      * @param   webhook - URL to make a POST request after announcing the transaction.
      */
-    constructor(public readonly data: object | string,
+    constructor(public readonly data: string,
                 public readonly generationHash?: string,
                 public readonly endpoint?: string,
                 public readonly webhook?: string) {
@@ -47,14 +47,8 @@ export class TransactionURI implements URIScheme {
         if (!url.query.data) {
             throw Error('Invalid URI: data parameter missing');
         }
-        let data;
-        try {
-            data = JSON.parse(url.query.data || '');
-        } catch (e) {
-            data = url.query.data || '';
-        }
         return new TransactionURI(
-            data,
+            url.query.data,
             url.query.generationHash,
             url.query.endpoint,
             url.query.webhook);
@@ -65,10 +59,7 @@ export class TransactionURI implements URIScheme {
      * @returns {Transaction}
      */
     toTransaction(): Transaction {
-        if (typeof this.data === 'string') {
-            return TransactionMapping.createFromPayload(this.data);
-        }
-        return TransactionMapping.createFromDTO(this.data);
+        return TransactionMapping.createFromPayload(this.data);
     }
 
     /**
