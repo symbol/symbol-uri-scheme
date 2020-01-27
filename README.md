@@ -14,7 +14,7 @@ This is a PoC to validate the proposed [NIP2 Transaction URI Scheme](https://git
 
 ## Important Notes
 
-- [0.3.4](https://www.npmjs.com/package/nem2-uri-scheme) - **Fushicho3 Network Compatibility (catapult-server@0.9.1.1)**
+- [0.4.1](https://www.npmjs.com/package/nem2-uri-scheme) - **Fushicho3 Network Compatibility (catapult-server@0.9.1.1)**
 
 ## Installation
 
