@@ -8,6 +8,7 @@ before_script:
 - npm run build
 script:
 - npm run test:coverage
+- npm run report-coverage
 - npx embedme README.md --verify
 - tslint --project .
 before_deploy:
