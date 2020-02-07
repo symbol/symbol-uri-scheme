@@ -66,10 +66,9 @@ export class TransactionURI implements URIScheme {
      * Build the URI
      */
     build(): string {
-        const data = typeof this.data === 'object' ? JSON.stringify(this.data) : this.data;
         const base = TransactionURI.PROTOCOL
             + TransactionURI.ACTION
-            + '?data=' + data;
+            + '?data=' + this.data;
         const generationHash = this.generationHash ? '&generationHash=' + this.generationHash : '';
         const endpoint = this.endpoint ? '&endpoint=' + this.endpoint : '';
         const webhook = this.webhook ? '&webhook=' + this.webhook : '';
