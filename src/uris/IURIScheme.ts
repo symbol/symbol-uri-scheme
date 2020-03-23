@@ -19,7 +19,7 @@ import {Transaction} from 'symbol-sdk';
 /**
  * URI Scheme interface
  */
-export interface URIScheme {
+export interface IURIScheme {
     toTransaction(): Transaction;
     build(): string;
 }

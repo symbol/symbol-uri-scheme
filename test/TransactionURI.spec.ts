@@ -21,7 +21,7 @@ import {
     Deadline,
     Mosaic,
     MosaicId,
-    NetworkCurrencyMosaic,
+    NetworkCurrencyPublic,
     NetworkType,
     PlainMessage,
     TransferTransaction,
@@ -86,7 +86,7 @@ describe('TransactionURI should', () => {
         const serialized = TransferTransaction.create(
             Deadline.create(),
             Address.createFromRawAddress('SAGYCE-QM5SK2-TGFUC5-Z5GZJR-ATKTBS-UQQMMH-KW5B'),
-            [NetworkCurrencyMosaic.createRelative(10)],
+            [NetworkCurrencyPublic.createRelative(10)],
             PlainMessage.create('hello'),
             NetworkType.MIJIN_TEST).serialize();
         const transactionURI = new TransactionURI(serialized);

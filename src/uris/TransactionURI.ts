@@ -16,9 +16,9 @@
 
 import {Transaction, TransactionMapping} from 'symbol-sdk';
 import * as parse from 'url-parse';
-import {URIScheme} from './URIScheme';
+import {IURIScheme} from './IURIScheme';
 
-export class TransactionURI implements URIScheme {
+export class TransactionURI implements IURIScheme {
 
     public static readonly PROTOCOL: string = 'web+nem://';
     public static readonly ACTION: string = 'transaction';

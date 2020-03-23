@@ -29,9 +29,10 @@
   "scripts": {
     "pretest": "npm run build",
     "build": "rm -rf dist/ && tsc",
+    "lint": "tslint --project .",
     "test": "mocha --ui bdd --recursive ./dist/test",
-    "test:cov-html": "nyc --reporter=html npm t",
-    "test:coverage": "nyc --reporter=text-lcov npm t",
+    "test:cov": "nyc --reporter=lcov --reporter=text-summary npm t",
+    "test:coveralls": "npm run test:cov | coveralls",
     "report-coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
