@@ -26,19 +26,21 @@ This is a PoC to validate the proposed [NIP2 Transaction URI Scheme](https://git
 ```ts
 // examples/TransactionToURI.ts
 
-import {Account, Deadline, EmptyMessage, NetworkCurrencyMosaic, NetworkType, TransferTransaction} from 'symbol-sdk';
-import {TransactionURI} from 'symbol-uri-scheme';
+import {Account, Deadline, EmptyMessage, NetworkCurrencyPublic, NetworkType, TransferTransaction} from 'symbol-sdk';
+import {TransactionURI} from "../src/uris/TransactionURI";
 
 const serializedTransaction = TransferTransaction.create(
     Deadline.create(),
     Account.generateNewAccount(NetworkType.TEST_NET).address,
-    [NetworkCurrencyMosaic.createRelative(10)],
+    [NetworkCurrencyPublic.createRelative(10)],
     EmptyMessage,
     NetworkType.TEST_NET
 ).serialize();
-const generationHash = ''; // replace with network generation hash
+
+const generationHash = 'ABC'; // replace with network generation hash
 const nodeUrl = 'http://localhost:3000';
 const webhookUrl = 'http://myapp.local/id';
+
 const transactionURI = new TransactionURI(serializedTransaction, generationHash, nodeUrl, webhookUrl);
 console.log(transactionURI.build());
 
@@ -49,7 +51,7 @@ console.log(transactionURI.build());
 ```ts
 // examples/URIToTransaction.ts
 
-import {TransactionURI} from "symbol-uri-scheme";
+import {TransactionURI} from "../src/uris/TransactionURI";
 
 const serializedTransaction = 'B500000000000000406D262D78CE449BC743A2F27FFE05A677A922C6FBA0B6FD' +
     'F7EE115E01F76A60D2B027C4F8F2826F727ADEC0E6406C2ECC7C67C49FED2DAD' +
@@ -61,7 +63,9 @@ const serializedTransaction = 'B500000000000000406D262D78CE449BC743A2F27FFE05A67
 const URI = 'web+nem://transaction?data='+ serializedTransaction + '&generationHash=test' +
     '&endpoint=http://localhost:3000&webhook=http://myapp.local/id';
 const transactionURI = TransactionURI.fromURI(URI);
+
 const transaction = transactionURI.toTransaction();
+console.log(transaction);
 
 ```
 
