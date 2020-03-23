@@ -14,22 +14,19 @@ interface AnnounceTransactionWebhookDTO extends WebhookDTO {
  */
 export class AnnounceTransactionWebhookBuilder implements IWebhookBuilder {
 
-    private readonly webhook: AnnounceTransactionWebhookDTO;
-
     constructor(public readonly hash: string,
                 public readonly signerPublicKey: string) {
-        this.webhook = {action: 'AnnounceTransaction',
-            data: {
-                hash: this.hash,
-                signerPublicKey: this.signerPublicKey
-            }
-        };
     }
 
     /**
      * Build the webhook DTO
      */
     build(): AnnounceTransactionWebhookDTO {
-        return this.webhook;
+        return {action: 'AnnounceTransaction',
+            data: {
+                hash: this.hash,
+                signerPublicKey: this.signerPublicKey
+            }
+        };
     }
 }
