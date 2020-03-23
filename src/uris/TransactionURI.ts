@@ -26,15 +26,15 @@ export class TransactionURI implements IURIScheme {
     /**
      * Create a TransactionURI.
      *
-     * @param   data - Payload of the transaction.
+     * @param   data - Transaction payload.
      * @param   generationHash  - Network generation hash.
-     * @param   endpoint - Node url to submit the transaction.
-     * @param   webhook - URL to make a POST request after announcing the transaction.
+     * @param   nodeUrl - Node url to submit the transaction.
+     * @param   webhookUrl - URL to make a POST request after announcing the transaction.
      */
     constructor(public readonly data: string,
                 public readonly generationHash?: string,
-                public readonly endpoint?: string,
-                public readonly webhook?: string) {
+                public readonly nodeUrl?: string,
+                public readonly webhookUrl?: string) {
     }
 
     /**
@@ -50,8 +50,8 @@ export class TransactionURI implements IURIScheme {
         return new TransactionURI(
             url.query.data,
             url.query.generationHash,
-            url.query.endpoint,
-            url.query.webhook);
+            url.query.nodeUrl,
+            url.query.webhookUrl);
     }
 
     /**
@@ -70,8 +70,8 @@ export class TransactionURI implements IURIScheme {
             + TransactionURI.ACTION
             + '?data=' + this.data;
         const generationHash = this.generationHash ? '&generationHash=' + this.generationHash : '';
-        const endpoint = this.endpoint ? '&endpoint=' + this.endpoint : '';
-        const webhook = this.webhook ? '&webhook=' + this.webhook : '';
-        return base + generationHash + endpoint + webhook;
+        const nodeUrl = this.nodeUrl ? '&nodeUrl=' + this.nodeUrl : '';
+        const webhookUrl = this.webhookUrl ? '&webhookUrl=' + this.webhookUrl : '';
+        return base + generationHash + nodeUrl + webhookUrl;
     }
 }

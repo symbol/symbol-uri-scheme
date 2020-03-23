@@ -38,14 +38,14 @@ describe('TransactionURI should', () => {
         expect(transactionURISerialized.data).to.deep.equal('foo');
     });
 
-    it('accept endpoint, generationHash and webhook parameters', () => {
+    it('accept nodeUrl, generationHash and webhookUrl parameters', () => {
         const transactionURI = new TransactionURI('test',
             'local-network',
             'http://localhost:3000',
-            'http://someexternalserver.com/webhook');
-        expect(transactionURI.endpoint).to.deep.equal('http://localhost:3000');
+            'http://someexternalserver.com/webhookUrl');
+        expect(transactionURI.nodeUrl).to.deep.equal('http://localhost:3000');
         expect(transactionURI.generationHash).to.deep.equal('local-network');
-        expect(transactionURI.webhook).to.deep.equal('http://someexternalserver.com/webhook');
+        expect(transactionURI.webhookUrl).to.deep.equal('http://someexternalserver.com/webhookUrl');
     });
 
     it('be created from URI', () => {
@@ -56,13 +56,13 @@ describe('TransactionURI should', () => {
             '99659BB8A2019FE9C60000000000000000000000000000000001050000000000' +
             '90D69CD255E556C640420F00000000000074657374';
         const URI = 'web+nem://transaction?data=' + serializedTransaction + '&generationHash=test' +
-            '&endpoint=http://localhost:3000';
+            '&nodeUrl=http://localhost:3000';
         const transactionURI = TransactionURI.fromURI(URI);
         transactionURI.toTransaction();
         expect(transactionURI.build()).to.deep.equal(URI);
     });
 
-    it('be created from URI with a webhook', () => {
+    it('be created from URI with a webhookUrl', () => {
         const serializedTransaction = 'B500000000000000406D262D78CE449BC743A2F27FFE05A677A922C6FBA0B6FD' +
             'F7EE115E01F76A60D2B027C4F8F2826F727ADEC0E6406C2ECC7C67C49FED2DAD' +
             '973F539046EE8A02CC499067D981CB2EA28D43537D8B3D91E1E0A1F7DA12DB13' +
@@ -70,7 +70,7 @@ describe('TransactionURI should', () => {
             '99659BB8A2019FE9C60000000000000000000000000000000001050000000000' +
             '90D69CD255E556C640420F00000000000074657374';
         const URI = 'web+nem://transaction?data=' + serializedTransaction +
-            '&webhook=http://someexternalserver.com/webhook';
+            '&webhookUrl=http://someexternalserver.com/webhookUrl';
         const transactionURI = TransactionURI.fromURI(URI);
         transactionURI.toTransaction();
         expect(transactionURI.build()).to.deep.equal(URI);
