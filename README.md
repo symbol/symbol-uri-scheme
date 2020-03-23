@@ -61,7 +61,7 @@ const serializedTransaction = 'B500000000000000406D262D78CE449BC743A2F27FFE05A67
     '90D69CD255E556C640420F00000000000074657374';
 
 const URI = 'web+nem://transaction?data='+ serializedTransaction + '&generationHash=test' +
-    '&endpoint=http://localhost:3000&webhook=http://myapp.local/id';
+    '&nodeUrl=http://localhost:3000&webhookUrl=http://myapp.local/id';
 const transactionURI = TransactionURI.fromURI(URI);
 
 const transaction = transactionURI.toTransaction();
