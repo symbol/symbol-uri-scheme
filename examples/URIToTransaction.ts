@@ -1,4 +1,4 @@
-import {TransactionURI} from "nem2-uri-scheme";
+import {TransactionURI} from "../src/uris/TransactionURI";
 
 const serializedTransaction = 'B500000000000000406D262D78CE449BC743A2F27FFE05A677A922C6FBA0B6FD' +
     'F7EE115E01F76A60D2B027C4F8F2826F727ADEC0E6406C2ECC7C67C49FED2DAD' +
@@ -10,4 +10,6 @@ const serializedTransaction = 'B500000000000000406D262D78CE449BC743A2F27FFE05A67
 const URI = 'web+nem://transaction?data='+ serializedTransaction + '&generationHash=test' +
     '&endpoint=http://localhost:3000&webhook=http://myapp.local/id';
 const transactionURI = TransactionURI.fromURI(URI);
+
 const transaction = transactionURI.toTransaction();
+console.log(transaction);

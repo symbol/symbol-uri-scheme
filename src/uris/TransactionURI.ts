@@ -1,5 +1,5 @@
 /*
-   Copyright 2019 NEM
+   Copyright 2019 - present NEM
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -14,11 +14,11 @@
    limitations under the License.
  */
 
-import {Transaction, TransactionMapping} from 'nem2-sdk';
+import {Transaction, TransactionMapping} from 'symbol-sdk';
 import * as parse from 'url-parse';
-import {URIScheme} from './URIScheme';
+import {IURIScheme} from './IURIScheme';
 
-export class TransactionURI implements URIScheme {
+export class TransactionURI implements IURIScheme {
 
     public static readonly PROTOCOL: string = 'web+nem://';
     public static readonly ACTION: string = 'transaction';

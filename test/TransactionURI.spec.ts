@@ -1,5 +1,5 @@
 /*
-   Copyright 2019 NEM
+   Copyright 2019 - present NEM
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -21,12 +21,12 @@ import {
     Deadline,
     Mosaic,
     MosaicId,
-    NetworkCurrencyMosaic,
+    NetworkCurrencyPublic,
     NetworkType,
     PlainMessage,
     TransferTransaction,
     UInt64,
-} from 'nem2-sdk';
+} from 'symbol-sdk';
 import {TransactionURI} from '../index';
 
 use(chaiExclude);
@@ -86,7 +86,7 @@ describe('TransactionURI should', () => {
         const serialized = TransferTransaction.create(
             Deadline.create(),
             Address.createFromRawAddress('SAGYCE-QM5SK2-TGFUC5-Z5GZJR-ATKTBS-UQQMMH-KW5B'),
-            [NetworkCurrencyMosaic.createRelative(10)],
+            [NetworkCurrencyPublic.createRelative(10)],
             PlainMessage.create('hello'),
             NetworkType.MIJIN_TEST).serialize();
         const transactionURI = new TransactionURI(serialized);
