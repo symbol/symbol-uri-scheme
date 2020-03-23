@@ -1,5 +1,5 @@
-import {Account, Deadline, EmptyMessage, NetworkCurrencyMosaic, NetworkType, TransferTransaction} from 'nem2-sdk';
-import {TransactionURI} from 'nem2-uri-scheme';
+import {Account, Deadline, EmptyMessage, NetworkCurrencyMosaic, NetworkType, TransferTransaction} from 'symbol-sdk';
+import {TransactionURI} from 'symbol-uri-scheme';
 
 const serializedTransaction = TransferTransaction.create(
     Deadline.create(),

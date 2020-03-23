@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "nem2-sdk": "^0.16.3",
-    "nem2-uri-scheme": "^0.3.3"
+    "symbol-sdk": "^0.16.3",
+    "symbol-uri-scheme": "^0.3.3"
   }
 }

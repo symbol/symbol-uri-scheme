@@ -1,24 +1,23 @@
-# nem2-uri-scheme
+# symbol-uri-scheme
 
-[![npm version](https://badge.fury.io/js/nem2-uri-scheme.svg)](https://badge.fury.io/js/nem2-uri-scheme)
-[![Build Status](https://travis-ci.org/nemfoundation/nem2-uri-scheme.svg?branch=master)](https://travis-ci.org/nemfoundation/nem2-uri-scheme)
-[![Coverage Status](https://coveralls.io/repos/github/nemfoundation/nem2-uri-scheme/badge.svg?branch=master)](https://coveralls.io/github/nemfoundation/nem2-uri-scheme?branch=master)
-[![Slack](https://img.shields.io/badge/chat-on%20slack-green.svg)](https://nem2.slack.com/messages/CB0UU89GS//)
+[![npm version](https://badge.fury.io/js/symbol-uri-scheme.svg)](https://badge.fury.io/js/symbol-uri-scheme)
+[![Build Status](https://travis-ci.org/nemfoundation/symbol-uri-scheme.svg?branch=master)](https://travis-ci.org/nemfoundation/symbol-uri-scheme)
+[![Coverage Status](https://coveralls.io/repos/github/nemfoundation/symbol-uri-scheme/badge.svg?branch=master)](https://coveralls.io/github/nemfoundation/symbol-uri-scheme?branch=master)
+[![Slack](https://img.shields.io/badge/chat-on%20slack-green.svg)](https://symbol.slack.com/messages/CB0UU89GS//)
 
-Catapult URI Scheme generator to serve transactions ready to be signed.
+Symbol URI Scheme generator to serve transactions ready to be signed.
 
 This is a PoC to validate the proposed [NIP2 Transaction URI Scheme](https://github.com/nemtech/NIP/issues/6).
 
 :warning: This library is experimental, use at your own risk.
 
+## Requirements
 
-## Important Notes
-
-- [0.4.1](https://www.npmjs.com/package/nem2-uri-scheme) - **Fushicho3 Network Compatibility (catapult-server@0.9.1.1)**
+- Node.js 12 LTS
 
 ## Installation
 
-``npm install nem2-uri-scheme``
+``npm install symbol-uri-scheme``
 
 ## Usage
 
@@ -27,8 +26,8 @@ This is a PoC to validate the proposed [NIP2 Transaction URI Scheme](https://git
 ```ts
 // examples/TransactionToURI.ts
 
-import {Account, Deadline, EmptyMessage, NetworkCurrencyMosaic, NetworkType, TransferTransaction} from 'nem2-sdk';
-import {TransactionURI} from 'nem2-uri-scheme';
+import {Account, Deadline, EmptyMessage, NetworkCurrencyMosaic, NetworkType, TransferTransaction} from 'symbol-sdk';
+import {TransactionURI} from 'symbol-uri-scheme';
 
 const serializedTransaction = TransferTransaction.create(
     Deadline.create(),
@@ -50,7 +49,7 @@ console.log(transactionURI.build());
 ```ts
 // examples/URIToTransaction.ts
 
-import {TransactionURI} from "nem2-uri-scheme";
+import {TransactionURI} from "symbol-uri-scheme";
 
 const serializedTransaction = 'B500000000000000406D262D78CE449BC743A2F27FFE05A677A922C6FBA0B6FD' +
     'F7EE115E01F76A60D2B027C4F8F2826F727ADEC0E6406C2ECC7C67C49FED2DAD' +

@@ -1,5 +1,5 @@
 /*
-   Copyright 2019 NEM
+   Copyright 2019 - present NEM
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@ import {
     PlainMessage,
     TransferTransaction,
     UInt64,
-} from 'nem2-sdk';
+} from 'symbol-sdk';
 import {TransactionURI} from '../index';
 
 use(chaiExclude);
