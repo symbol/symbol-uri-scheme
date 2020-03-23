@@ -10,6 +10,7 @@ script:
 - npm run test:cov
 - npm run lint:all
 - npx embedme README.md --verify
+- npm run coveralls-report
 before_deploy:
 - npx typedoc --out ts-docs src
 - touch ./ts-docs/.nojekyll
