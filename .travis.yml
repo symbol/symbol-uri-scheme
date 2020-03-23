@@ -7,10 +7,9 @@ cache:
 before_script:
 - npm run build
 script:
-- npm run test:coverage
-- npm run report-coverage
+- npm run test:cov
+- npm run lint:all
 - npx embedme README.md --verify
-- tslint --project .
 before_deploy:
 - npx typedoc --out ts-docs src
 - touch ./ts-docs/.nojekyll
