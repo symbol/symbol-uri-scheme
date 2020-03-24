@@ -20,7 +20,7 @@ import {IURIScheme} from './IURIScheme';
 
 export class TransactionURI implements IURIScheme {
 
-    public static readonly PROTOCOL: string = 'web+nem://';
+    public static readonly PROTOCOL: string = 'web+symbol://';
     public static readonly ACTION: string = 'transaction';
 
     /**
