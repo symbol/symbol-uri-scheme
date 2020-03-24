@@ -55,7 +55,7 @@ describe('TransactionURI should', () => {
             '5C1B9867DB80553B000000000198544140420F000000000015D6FE9001000000' +
             '99659BB8A2019FE9C60000000000000000000000000000000001050000000000' +
             '90D69CD255E556C640420F00000000000074657374';
-        const URI = 'web+nem://transaction?data=' + serializedTransaction + '&generationHash=test' +
+        const URI = 'web+symbol://transaction?data=' + serializedTransaction + '&generationHash=test' +
             '&nodeUrl=http://localhost:3000';
         const transactionURI = TransactionURI.fromURI(URI);
         transactionURI.toTransaction();
@@ -69,7 +69,7 @@ describe('TransactionURI should', () => {
             '5C1B9867DB80553B000000000198544140420F000000000015D6FE9001000000' +
             '99659BB8A2019FE9C60000000000000000000000000000000001050000000000' +
             '90D69CD255E556C640420F00000000000074657374';
-        const URI = 'web+nem://transaction?data=' + serializedTransaction +
+        const URI = 'web+symbol://transaction?data=' + serializedTransaction +
             '&webhookUrl=http://someexternalserver.com/webhookUrl';
         const transactionURI = TransactionURI.fromURI(URI);
         transactionURI.toTransaction();
@@ -78,7 +78,7 @@ describe('TransactionURI should', () => {
 
     it('not be created from URI when data param is missing', () => {
         expect(() => {
-            TransactionURI.fromURI('web+nem://transaction?chain_id=test');
+            TransactionURI.fromURI('web+symbol://transaction?chain_id=test');
         }).to.throw('Invalid URI: data parameter missing');
     });
 
@@ -90,7 +90,7 @@ describe('TransactionURI should', () => {
             PlainMessage.create('hello'),
             NetworkType.MIJIN_TEST).serialize();
         const transactionURI = new TransactionURI(serialized);
-        expect(transactionURI.build()).to.deep.equal('web+nem://transaction?data=' + serialized);
+        expect(transactionURI.build()).to.deep.equal('web+symbol://transaction?data=' + serialized);
     });
 
     it('create a transaction', () => {
