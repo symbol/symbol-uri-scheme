@@ -1,15 +1,13 @@
-# symbol-uri-scheme
+# Symbol URI Scheme
 
 [![npm version](https://badge.fury.io/js/symbol-uri-scheme.svg)](https://badge.fury.io/js/symbol-uri-scheme)
-[![Build Status](https://travis-ci.org/nemfoundation/symbol-uri-scheme.svg?branch=master)](https://travis-ci.org/nemfoundation/symbol-uri-scheme)
+[![Build Status](https://travis-ci.com/nemfoundation/symbol-uri-scheme.svg?branch=master)](https://travis-ci.com/nemfoundation/symbol-uri-scheme)
 [![Coverage Status](https://coveralls.io/repos/github/nemfoundation/symbol-uri-scheme/badge.svg?branch=master)](https://coveralls.io/github/nemfoundation/symbol-uri-scheme?branch=master)
 [![Slack](https://img.shields.io/badge/chat-on%20slack-green.svg)](https://symbol.slack.com/messages/CB0UU89GS//)
 
-Symbol URI Scheme generator to serve transactions ready to be signed.
+URI Scheme library to serve Symbol transactions ready to be signed.
 
-This is a PoC to validate the proposed [NIP2 Transaction URI Scheme](https://github.com/nemtech/NIP/issues/6).
-
-:warning: This library is experimental, use at your own risk.
+This is a PoC to validate the proposed [NIP2 Transaction URI Scheme](https://github.com/nemtech/NIP/issues/6). When stable, the repository will be moved to the [nemtech](https://github.com/nemtech) organization.
 
 ## Requirements
 
@@ -21,7 +19,7 @@ This is a PoC to validate the proposed [NIP2 Transaction URI Scheme](https://git
 
 ## Usage
 
-### Transaction to URI
+### Generate URI from Transaction
 
 ```ts
 // examples/TransactionToURI.ts
@@ -46,7 +44,7 @@ console.log(transactionURI.build());
 
 ```
 
-### URI to Transaction
+### Create Transaction from URI
 
 ```ts
 // examples/URIToTransaction.ts
@@ -69,6 +67,28 @@ console.log(transaction);
 
 ```
 
+## Getting help
+
+Use the following available resources to get help:
+
+- [Symbol Documentation][docs]
+- Join the community [slack group (#sig-client)][slack] 
+- If you found a bug, [open a new issue][issues]
+
+## Contributing
+
+This project is developed and maintained by NEM Foundation.
+
+Contributions are welcome and appreciated. 
+Check [CONTRIBUTING](CONTRIBUTING.md) for information on how to contribute.
+
 ## License
 
-Licensed under the [Apache License](LICENSE.md), Version 2.
+Copyright 2019-present NEM
+
+Licensed under the [Apache License 2.0](LICENSE)
+
+[self]: https://github.com/nemfoundation/symbol-uri-scheme
+[docs]: https://nemtech.github.io
+[issues]: https://github.com/nemfoundation/symbol-uri-scheme/issues
+[slack]: https://join.slack.com/t/nem2/shared_invite/enQtMzY4MDc2NTg0ODgyLWZmZWRiMjViYTVhZjEzOTA0MzUyMTA1NTA5OWQ0MWUzNTA4NjM5OTJhOGViOTBhNjkxYWVhMWRiZDRkOTE0YmU
