@@ -11,14 +11,13 @@ script:
 - npm run lint:all
 - npx embedme README.md --verify
 - npm run coveralls-report
-before_deploy:
 - CURRENT_VERSION=$(npm run version --silent)
 - npx typedoc --out "ts-docs/$CURRENT_VERSION" src
 - touch ./ts-docs/.nojekyll
 deploy:
   - provider: script
     skip_cleanup: true
-    script: /bin/sh travis/github-pages.sh
+    script: /bin/sh travis/githubPages.sh
     on:
       branch: master
   - provider: script
