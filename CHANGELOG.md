@@ -4,9 +4,17 @@
  
  The changelog format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+ ## [0.4.4] - 23-Apr-2020
+
+ **Milestone**: 0.9.5.1
+
+  ### Changed
+   
+   - Updated symbol-sdk to ``0.19.1``
+
  ## [0.4.4] - 21-Apr-2020
 
- **Milestone**: Fushicho.5(RC4 0.9.3.1)
+ **Milestone**: RC6 0.9.4.1
  
   ### Changed
    
@@ -14,19 +22,15 @@
 
  ## [0.4.3] - 24-Mar-2020
  
- **Milestone**: Fushicho.5(RC4 0.9.3.1)
- 
- ### Added
- 
- - Webhook support
- 
+ **Milestone**: RC5 0.9.3.1
+  
  ### Changed
   
   - Protocol from ``nem`` to ``symbol``.
 
  ## [0.4.2] - 23-Mar-2020
  
- **Milestone**: Fushicho.5(RC4 0.9.3.1)
+ **Milestone**: Fushicho.5(RC4 0.9.2.1)
  
  ### Added
  
