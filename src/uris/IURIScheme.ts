@@ -14,7 +14,7 @@
    limitations under the License.
  */
 
-import {Transaction} from 'symbol-sdk';
+import { Transaction } from 'symbol-sdk';
 
 /**
  * URI Scheme interface
