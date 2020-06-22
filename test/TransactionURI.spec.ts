@@ -14,20 +14,11 @@
    limitations under the License.
  */
 
-import {expect, use} from 'chai';
+import { expect, use } from 'chai';
 import chaiExclude from 'chai-exclude';
-import {
-    Address,
-    Deadline,
-    Mosaic,
-    MosaicId,
-    NetworkCurrencyPublic,
-    NetworkType,
-    PlainMessage,
-    TransferTransaction,
-    UInt64,
-} from 'symbol-sdk';
-import {TransactionURI} from '../index';
+import { Account, Deadline, Mosaic, MosaicId, NetworkCurrencyPublic, NetworkType, PlainMessage, TransferTransaction, UInt64 } from 'symbol-sdk';
+
+import { TransactionURI } from '../index';
 
 use(chaiExclude);
 
@@ -49,12 +40,12 @@ describe('TransactionURI should', () => {
     });
 
     it('be created from URI', () => {
-        const serializedTransaction = 'B500000000000000406D262D78CE449BC743A2F27FFE05A677A922C6FBA0B6FD' +
-            'F7EE115E01F76A60D2B027C4F8F2826F727ADEC0E6406C2ECC7C67C49FED2DAD' +
-            '973F539046EE8A02CC499067D981CB2EA28D43537D8B3D91E1E0A1F7DA12DB13' +
-            '5C1B9867DB80553B000000000198544140420F000000000015D6FE9001000000' +
-            '99659BB8A2019FE9C60000000000000000000000000000000001050000000000' +
-            '90D69CD255E556C640420F00000000000074657374';
+        const serializedTransaction = 'B600000000000000000000000000000000000000000' +
+        '0000000000000000000000000000000000000000000000000000000000000000000000000' +
+        '0000000000000000000000000000000000000000000000000000000000000000000000000' +
+        '0000000000000000000000000000190544100000000000000005816E98404000000900FFE' +
+        'A45AEA2EE9B880D5E4F9B91B75857F444F1766CDCB0600010000000000CC403C7A113BDF7' +
+        'C80969800000000000068656C6C6F';
         const URI = 'web+symbol://transaction?data=' + serializedTransaction + '&generationHash=test' +
             '&nodeUrl=http://localhost:3000';
         const transactionURI = TransactionURI.fromURI(URI);
@@ -63,12 +54,12 @@ describe('TransactionURI should', () => {
     });
 
     it('be created from URI with a webhookUrl', () => {
-        const serializedTransaction = 'B500000000000000406D262D78CE449BC743A2F27FFE05A677A922C6FBA0B6FD' +
-            'F7EE115E01F76A60D2B027C4F8F2826F727ADEC0E6406C2ECC7C67C49FED2DAD' +
-            '973F539046EE8A02CC499067D981CB2EA28D43537D8B3D91E1E0A1F7DA12DB13' +
-            '5C1B9867DB80553B000000000198544140420F000000000015D6FE9001000000' +
-            '99659BB8A2019FE9C60000000000000000000000000000000001050000000000' +
-            '90D69CD255E556C640420F00000000000074657374';
+        const serializedTransaction = 'B600000000000000000000000000000000000000000' +
+        '0000000000000000000000000000000000000000000000000000000000000000000000000' +
+        '0000000000000000000000000000000000000000000000000000000000000000000000000' +
+        '0000000000000000000000000000190544100000000000000005816E98404000000900FFE' +
+        'A45AEA2EE9B880D5E4F9B91B75857F444F1766CDCB0600010000000000CC403C7A113BDF7' +
+        'C80969800000000000068656C6C6F';
         const URI = 'web+symbol://transaction?data=' + serializedTransaction +
             '&webhookUrl=http://someexternalserver.com/webhookUrl';
         const transactionURI = TransactionURI.fromURI(URI);
@@ -85,7 +76,7 @@ describe('TransactionURI should', () => {
     it('build the URI from serialized data', () => {
         const serialized = TransferTransaction.create(
             Deadline.create(),
-            Address.createFromRawAddress('SAGYCE-QM5SK2-TGFUC5-Z5GZJR-ATKTBS-UQQMMH-KW5B'),
+            Account.generateNewAccount(NetworkType.MIJIN_TEST).address,
             [NetworkCurrencyPublic.createRelative(10)],
             PlainMessage.create('hello'),
             NetworkType.MIJIN_TEST).serialize();
@@ -96,10 +87,11 @@ describe('TransactionURI should', () => {
     it('create a transaction', () => {
         const transaction = TransferTransaction.create(
             Deadline.create(),
-            Address.createFromRawAddress('SAGYCE-QM5SK2-TGFUC5-Z5GZJR-ATKTBS-UQQMMH-KW5B'),
+            Account.generateNewAccount(NetworkType.MIJIN_TEST).address,
             [new Mosaic(new MosaicId('7cdf3b117a3c40cc'), UInt64.fromUint(10000000))],
             PlainMessage.create('hello'),
             NetworkType.MIJIN_TEST);
+            console.log(transaction.serialize());
         const transactionURI = new TransactionURI(transaction.serialize());
         expect(transactionURI.toTransaction()).to.deep.equal(transaction);
     });
