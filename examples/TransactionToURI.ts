@@ -1,5 +1,6 @@
-import {Account, Deadline, EmptyMessage, NetworkCurrencyPublic, NetworkType, TransferTransaction} from 'symbol-sdk';
-import {TransactionURI} from "../src/uris/TransactionURI";
+import { Account, Deadline, EmptyMessage, NetworkCurrencyPublic, NetworkType, TransferTransaction } from 'symbol-sdk';
+
+import { TransactionURI } from '../src/uris/TransactionURI';
 
 const serializedTransaction = TransferTransaction.create(
     Deadline.create(),
