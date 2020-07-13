@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The changelog format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## [0.4.7] - 22-Jun-2020
+## [0.4.7] - 13-Jul-2020
 
 **Milestone**: 0.9.6.3
 
