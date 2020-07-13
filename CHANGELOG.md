@@ -65,6 +65,7 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 - Initial release
 
 
+[0.4.7]: https://github.com/nemtech/symbol-sdk-typescript-javascript/compare/v0.4.6...v0.4.7
 [0.4.6]: https://github.com/nemtech/symbol-sdk-typescript-javascript/compare/v0.4.5...v0.4.6
 [0.4.5]: https://github.com/nemtech/symbol-sdk-typescript-javascript/compare/v0.4.4...v0.4.5
 [0.4.4]: https://github.com/nemtech/symbol-sdk-typescript-javascript/compare/v0.4.3...v0.4.4
