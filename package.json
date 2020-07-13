@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "rxjs": "^6.5.3",
-    "symbol-sdk": "^0.20.2",
+    "symbol-sdk": "^0.20.6",
     "url-parse": "1.4.7"
   },
   "devDependencies": {
