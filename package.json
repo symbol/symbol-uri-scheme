@@ -38,19 +38,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nemfoundation/symbol-uri-schema.git"
+    "url": "git+https://github.com/nemtech/symbol-uri-schema.git"
   },
   "license": "Apache 2.0",
-  "contributors": [
-    {
-      "name": "dgarcia360",
-      "email": "david@nem.foundation"
-    }
-  ],
   "bugs": {
-    "url": "https://github.com/nemfoundation/symbol-uri-schema/issues"
+    "url": "https://github.com/nemtech/symbol-uri-schema/issues"
   },
-  "homepage": "https://github.com/nemfoundation/symbol-uri-schema#readme",
+  "homepage": "https://github.com/nemtech/symbol-uri-schema#readme",
   "nyc": {
     "exclude": [
       "**/*.spec.js"
