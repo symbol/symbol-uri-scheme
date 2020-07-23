@@ -78,8 +78,6 @@ Use the following available resources to get help:
 
 ## Contributing
 
-This project is developed and maintained by NEM Foundation.
-
 Contributions are welcome and appreciated. 
 Check [CONTRIBUTING](CONTRIBUTING.md) for information on how to contribute.
 
