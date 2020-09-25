@@ -1,6 +1,6 @@
 {
   "name": "symbol-uri-scheme",
-  "version": "0.4.8",
+  "version": "0.5.0",
   "description": "Symbol library to handle uri scheme",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
