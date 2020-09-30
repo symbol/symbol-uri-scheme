@@ -1,6 +1,6 @@
 {
   "name": "symbol-uri-scheme",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Symbol library to handle uri scheme",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "rxjs": "^6.5.3",
-    "symbol-sdk": "^0.20.8-alpha-202009180859",
+    "symbol-sdk": "^0.21.0",
     "url-parse": "1.4.7"
   },
   "devDependencies": {
