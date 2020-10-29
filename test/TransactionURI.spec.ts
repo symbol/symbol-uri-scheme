@@ -16,7 +16,7 @@
 
 import { expect, use } from 'chai';
 import chaiExclude from 'chai-exclude';
-import { Account, Deadline, Mosaic, MosaicId, NetworkCurrencyPublic, NetworkType, PlainMessage, TransferTransaction, UInt64 } from 'symbol-sdk';
+import { Account, Deadline, Mosaic, MosaicId, NetworkCurrencyPublic, NetworkType, PlainMessage, TransactionMapping, TransferTransaction, UInt64 } from 'symbol-sdk';
 
 import { TransactionURI } from '../index';
 
@@ -25,12 +25,13 @@ use(chaiExclude);
 describe('TransactionURI should', () => {
 
     it('be created with data and format', () => {
-        const transactionURISerialized = new TransactionURI('foo');
+        const transactionURISerialized = new TransactionURI('foo', TransactionMapping.createFromPayload);
         expect(transactionURISerialized.data).to.deep.equal('foo');
     });
 
     it('accept nodeUrl, generationHash and webhookUrl parameters', () => {
-        const transactionURI = new TransactionURI('test',
+        const transactionURI = new TransactionURI('test', 
+            TransactionMapping.createFromPayload,
             'local-network',
             'http://localhost:3000',
             'http://someexternalserver.com/webhookUrl');
@@ -48,7 +49,7 @@ describe('TransactionURI should', () => {
         'C80969800000000000068656C6C6F';
         const URI = 'web+symbol://transaction?data=' + serializedTransaction + '&generationHash=test' +
             '&nodeUrl=http://localhost:3000';
-        const transactionURI = TransactionURI.fromURI(URI);
+        const transactionURI = TransactionURI.fromURI(URI, TransactionMapping.createFromPayload);
         transactionURI.toTransaction();
         expect(transactionURI.build()).to.deep.equal(URI);
     });
@@ -62,14 +63,14 @@ describe('TransactionURI should', () => {
         'C80969800000000000068656C6C6F';
         const URI = 'web+symbol://transaction?data=' + serializedTransaction +
             '&webhookUrl=http://someexternalserver.com/webhookUrl';
-        const transactionURI = TransactionURI.fromURI(URI);
+        const transactionURI = TransactionURI.fromURI(URI, TransactionMapping.createFromPayload);
         transactionURI.toTransaction();
         expect(transactionURI.build()).to.deep.equal(URI);
     });
 
     it('not be created from URI when data param is missing', () => {
         expect(() => {
-            TransactionURI.fromURI('web+symbol://transaction?chain_id=test');
+            TransactionURI.fromURI('web+symbol://transaction?chain_id=test', TransactionMapping.createFromPayload);
         }).to.throw('Invalid URI: data parameter missing');
     });
 
@@ -80,7 +81,7 @@ describe('TransactionURI should', () => {
             [NetworkCurrencyPublic.createRelative(10)],
             PlainMessage.create('hello'),
             NetworkType.MIJIN_TEST).serialize();
-        const transactionURI = new TransactionURI(serialized);
+        const transactionURI = new TransactionURI(serialized, TransactionMapping.createFromPayload);
         expect(transactionURI.build()).to.deep.equal('web+symbol://transaction?data=' + serialized);
     });
 
@@ -92,7 +93,7 @@ describe('TransactionURI should', () => {
             PlainMessage.create('hello'),
             NetworkType.MIJIN_TEST);
             console.log(transaction.serialize());
-        const transactionURI = new TransactionURI(transaction.serialize());
+        const transactionURI = new TransactionURI(transaction.serialize(), TransactionMapping.createFromPayload);
         expect(transactionURI.toTransaction()).to.deep.equal(transaction);
     });
 

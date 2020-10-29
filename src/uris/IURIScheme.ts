@@ -14,12 +14,11 @@
    limitations under the License.
  */
 
-import { Transaction } from 'symbol-sdk';
 
 /**
  * URI Scheme interface
  */
-export interface IURIScheme {
-    toTransaction(): Transaction;
+export interface IURIScheme<T> {
+    toTransaction(): T;
     build(): string;
 }
