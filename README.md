@@ -24,7 +24,7 @@ This is a PoC to validate the proposed [NIP2 Transaction URI Scheme](https://git
 ```ts
 // examples/TransactionToURI.ts
 
-import { Account, Deadline, EmptyMessage, NetworkCurrencyPublic, NetworkType, TransferTransaction } from 'symbol-sdk';
+import { Account, Deadline, EmptyMessage, NetworkCurrencyPublic, NetworkType, TransferTransaction, TransactionMapping } from 'symbol-sdk';
 
 import { TransactionURI } from '../src/uris/TransactionURI';
 
@@ -40,7 +40,7 @@ const generationHash = 'ABC'; // replace with network generation hash
 const nodeUrl = 'http://localhost:3000';
 const webhookUrl = 'http://myapp.local/id';
 
-const transactionURI = new TransactionURI(serializedTransaction, generationHash, nodeUrl, webhookUrl);
+const transactionURI = new TransactionURI(serializedTransaction, TransactionMapping.createFromPayload, generationHash, nodeUrl, webhookUrl);
 console.log(transactionURI.build());
 
 ```
@@ -50,6 +50,7 @@ console.log(transactionURI.build());
 ```ts
 // examples/URIToTransaction.ts
 
+import { TransactionMapping } from 'symbol-sdk';
 import { TransactionURI } from '../src/uris/TransactionURI';
 
 const serializedTransaction = 'B600000000000000000000000000000000000000000' +
@@ -61,7 +62,7 @@ const serializedTransaction = 'B600000000000000000000000000000000000000000' +
 
 const URI = 'web+symbol://transaction?data=' + serializedTransaction + '&generationHash=test' +
     '&nodeUrl=http://localhost:3000&webhookUrl=http://myapp.local/id';
-const transactionURI = TransactionURI.fromURI(URI);
+const transactionURI = TransactionURI.fromURI(URI, TransactionMapping.createFromPayload);
 
 const transaction = transactionURI.toTransaction();
 console.log(transaction);

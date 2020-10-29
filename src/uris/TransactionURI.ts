@@ -14,11 +14,11 @@
    limitations under the License.
  */
 
-import {Transaction, TransactionMapping} from 'symbol-sdk';
 import * as parse from 'url-parse';
 import {IURIScheme} from './IURIScheme';
+import {ITransactionMapper} from './ITransactionMapper';
 
-export class TransactionURI implements IURIScheme {
+export class TransactionURI<T> implements IURIScheme<T> {
 
     public static readonly PROTOCOL: string = 'web+symbol://';
     public static readonly ACTION: string = 'transaction';
@@ -32,6 +32,7 @@ export class TransactionURI implements IURIScheme {
      * @param   webhookUrl - URL to make a POST request after announcing the transaction.
      */
     constructor(public readonly data: string,
+                public readonly transactionMapper: ITransactionMapper<T>,
                 public readonly generationHash?: string,
                 public readonly nodeUrl?: string,
                 public readonly webhookUrl?: string) {
@@ -40,15 +41,17 @@ export class TransactionURI implements IURIScheme {
     /**
      * Static constructor function from URI
      * @param   uri - Transaction URI scheme
+     * @param   {ITransactionMapper} transactionMapper - creates a transaction object from given payload
      * @returns {TransactionURI}
      */
-    static fromURI(uri: string) {
+    static fromURI<T>(uri: string, transactionMapper: ITransactionMapper<T>) {
         const url = parse(uri, true);
         if (!url.query.data) {
             throw Error('Invalid URI: data parameter missing');
         }
         return new TransactionURI(
             url.query.data,
+            transactionMapper,
             url.query.generationHash,
             url.query.nodeUrl,
             url.query.webhookUrl);
@@ -58,8 +61,8 @@ export class TransactionURI implements IURIScheme {
      * Turn TransactionURI into Transaction object
      * @returns {Transaction}
      */
-    toTransaction(): Transaction {
-        return TransactionMapping.createFromPayload(this.data);
+    toTransaction(): T {
+        return this.transactionMapper(this.data);
     }
 
     /**

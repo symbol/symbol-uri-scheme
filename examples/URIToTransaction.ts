@@ -1,3 +1,4 @@
+import { TransactionMapping } from 'symbol-sdk';
 import { TransactionURI } from '../src/uris/TransactionURI';
 
 const serializedTransaction = 'B600000000000000000000000000000000000000000' +
@@ -9,7 +10,7 @@ const serializedTransaction = 'B600000000000000000000000000000000000000000' +
 
 const URI = 'web+symbol://transaction?data=' + serializedTransaction + '&generationHash=test' +
     '&nodeUrl=http://localhost:3000&webhookUrl=http://myapp.local/id';
-const transactionURI = TransactionURI.fromURI(URI);
+const transactionURI = TransactionURI.fromURI(URI, TransactionMapping.createFromPayload);
 
 const transaction = transactionURI.toTransaction();
 console.log(transaction);
