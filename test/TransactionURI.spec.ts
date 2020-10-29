@@ -16,7 +16,16 @@
 
 import { expect, use } from 'chai';
 import chaiExclude from 'chai-exclude';
-import { Account, Deadline, Mosaic, MosaicId, NetworkCurrencyPublic, NetworkType, PlainMessage, TransactionMapping, TransferTransaction, UInt64 } from 'symbol-sdk';
+import { Account,
+         Deadline,
+         Mosaic,
+         MosaicId,
+         NetworkCurrencyPublic,
+         NetworkType,
+         PlainMessage,
+         TransactionMapping,
+         TransferTransaction,
+         UInt64 } from 'symbol-sdk';
 
 import { TransactionURI } from '../index';
 
@@ -30,7 +39,7 @@ describe('TransactionURI should', () => {
     });
 
     it('accept nodeUrl, generationHash and webhookUrl parameters', () => {
-        const transactionURI = new TransactionURI('test', 
+        const transactionURI = new TransactionURI('test',
             TransactionMapping.createFromPayload,
             'local-network',
             'http://localhost:3000',
