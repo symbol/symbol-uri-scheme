@@ -91,7 +91,7 @@
 				</a>
 				<pre><code class="language-ts"><span class="hljs-comment">// examples/TransactionToURI.ts</span>
 
-<span class="hljs-keyword">import</span> { Account, Deadline, EmptyMessage, NetworkCurrencyPublic, NetworkType, TransferTransaction } <span class="hljs-keyword">from</span> <span class="hljs-string">'symbol-sdk'</span>;
+<span class="hljs-keyword">import</span> { Account, Deadline, EmptyMessage, NetworkCurrencyPublic, NetworkType, TransferTransaction, TransactionMapping } <span class="hljs-keyword">from</span> <span class="hljs-string">'symbol-sdk'</span>;
 
 <span class="hljs-keyword">import</span> { TransactionURI } <span class="hljs-keyword">from</span> <span class="hljs-string">'../src/uris/TransactionURI'</span>;
 
@@ -107,7 +107,7 @@
 <span class="hljs-keyword">const</span> nodeUrl = <span class="hljs-string">'http://localhost:3000'</span>;
 <span class="hljs-keyword">const</span> webhookUrl = <span class="hljs-string">'http://myapp.local/id'</span>;
 
-<span class="hljs-keyword">const</span> transactionURI = <span class="hljs-keyword">new</span> TransactionURI(serializedTransaction, generationHash, nodeUrl, webhookUrl);
+<span class="hljs-keyword">const</span> transactionURI = <span class="hljs-keyword">new</span> TransactionURI(serializedTransaction, TransactionMapping.createFromPayload, generationHash, nodeUrl, webhookUrl);
 <span class="hljs-built_in">console</span>.log(transactionURI.build());
 </code></pre>
 				<a href="#create-transaction-from-uri" id="create-transaction-from-uri" style="color: inherit; text-decoration: none;">
@@ -115,6 +115,7 @@
 				</a>
 				<pre><code class="language-ts"><span class="hljs-comment">// examples/URIToTransaction.ts</span>
 
+<span class="hljs-keyword">import</span> { TransactionMapping } <span class="hljs-keyword">from</span> <span class="hljs-string">'symbol-sdk'</span>;
 <span class="hljs-keyword">import</span> { TransactionURI } <span class="hljs-keyword">from</span> <span class="hljs-string">'../src/uris/TransactionURI'</span>;
 
 <span class="hljs-keyword">const</span> serializedTransaction = <span class="hljs-string">'B600000000000000000000000000000000000000000'</span> +
@@ -126,7 +127,7 @@
 
 <span class="hljs-keyword">const</span> URI = <span class="hljs-string">'web+symbol://transaction?data='</span> + serializedTransaction + <span class="hljs-string">'&amp;generationHash=test'</span> +
     <span class="hljs-string">'&amp;nodeUrl=http://localhost:3000&amp;webhookUrl=http://myapp.local/id'</span>;
-<span class="hljs-keyword">const</span> transactionURI = TransactionURI.fromURI(URI);
+<span class="hljs-keyword">const</span> transactionURI = TransactionURI.fromURI(URI, TransactionMapping.createFromPayload);
 
 <span class="hljs-keyword">const</span> transaction = transactionURI.toTransaction();
 <span class="hljs-built_in">console</span>.log(transaction);
@@ -157,6 +158,9 @@
 				<ul>
 					<li class="globals  ">
 						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_uris_itransactionmapper_.html">"uris/ITransaction<wbr>Mapper"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_uris_iurischeme_.html">"uris/IURIScheme"</a>

@@ -62,13 +62,21 @@
 					<a href="_uris_transactionuri_.transactionuri.html">TransactionURI</a>
 				</li>
 			</ul>
-			<h1>Class TransactionURI</h1>
+			<h1>Class TransactionURI&lt;T&gt;</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-type-parameters">
+				<h3>Type parameters</h3>
+				<ul class="tsd-type-parameters">
+					<li>
+						<h4>T</h4>
+					</li>
+				</ul>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -80,7 +88,7 @@
 			<section class="tsd-panel">
 				<h3>Implements</h3>
 				<ul class="tsd-hierarchy">
-					<li><a href="../interfaces/_uris_iurischeme_.iurischeme.html" class="tsd-signature-type">IURIScheme</a></li>
+					<li><a href="../interfaces/_uris_iurischeme_.iurischeme.html" class="tsd-signature-type">IURIScheme</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -99,6 +107,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_uris_transactionuri_.transactionuri.html#data" class="tsd-kind-icon">data</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_uris_transactionuri_.transactionuri.html#generationhash" class="tsd-kind-icon">generation<wbr>Hash</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_uris_transactionuri_.transactionuri.html#nodeurl" class="tsd-kind-icon">node<wbr>Url</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_uris_transactionuri_.transactionuri.html#transactionmapper" class="tsd-kind-icon">transaction<wbr>Mapper</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_uris_transactionuri_.transactionuri.html#webhookurl" class="tsd-kind-icon">webhook<wbr>Url</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="_uris_transactionuri_.transactionuri.html#action" class="tsd-kind-icon">ACTION</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="_uris_transactionuri_.transactionuri.html#protocol" class="tsd-kind-icon">PROTOCOL</a></li>
@@ -109,7 +118,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_uris_transactionuri_.transactionuri.html#build" class="tsd-kind-icon">build</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_uris_transactionuri_.transactionuri.html#totransaction" class="tsd-kind-icon">to<wbr>Transaction</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_uris_transactionuri_.transactionuri.html#fromuri" class="tsd-kind-icon">fromURI</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="_uris_transactionuri_.transactionuri.html#fromuri" class="tsd-kind-icon">fromURI</a></li>
 							</ul>
 						</section>
 					</div>
@@ -121,19 +130,22 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>TransactionURI<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, generationHash<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, nodeUrl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, webhookUrl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_uris_transactionuri_.transactionuri.html" class="tsd-signature-type">TransactionURI</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>TransactionURI<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, transactionMapper<span class="tsd-signature-symbol">: </span><a href="../modules/_uris_itransactionmapper_.html#itransactionmapper" class="tsd-signature-type">ITransactionMapper</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, generationHash<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, nodeUrl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, webhookUrl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_uris_transactionuri_.transactionuri.html" class="tsd-signature-type">TransactionURI</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/nemtech/symbol-uri-scheme/blob/cc62cec/src/uris/TransactionURI.ts#L24">uris/TransactionURI.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/nemtech/symbol-uri-scheme/blob/0931ac3/src/uris/TransactionURI.ts#L24">uris/TransactionURI.ts:24</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>data: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>transactionMapper: <a href="../modules/_uris_itransactionmapper_.html#itransactionmapper" class="tsd-signature-type">ITransactionMapper</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> generationHash: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
@@ -158,7 +170,7 @@
 					<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/nemtech/symbol-uri-scheme/blob/cc62cec/src/uris/TransactionURI.ts#L34">uris/TransactionURI.ts:34</a></li>
+							<li>Defined in <a href="https://github.com/nemtech/symbol-uri-scheme/blob/0931ac3/src/uris/TransactionURI.ts#L34">uris/TransactionURI.ts:34</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -168,7 +180,7 @@
 					<div class="tsd-signature tsd-kind-icon">generation<wbr>Hash<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/nemtech/symbol-uri-scheme/blob/cc62cec/src/uris/TransactionURI.ts#L35">uris/TransactionURI.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/nemtech/symbol-uri-scheme/blob/0931ac3/src/uris/TransactionURI.ts#L36">uris/TransactionURI.ts:36</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -178,7 +190,17 @@
 					<div class="tsd-signature tsd-kind-icon">node<wbr>Url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/nemtech/symbol-uri-scheme/blob/cc62cec/src/uris/TransactionURI.ts#L36">uris/TransactionURI.ts:36</a></li>
+							<li>Defined in <a href="https://github.com/nemtech/symbol-uri-scheme/blob/0931ac3/src/uris/TransactionURI.ts#L37">uris/TransactionURI.ts:37</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="transactionmapper" class="tsd-anchor"></a>
+					<h3>transaction<wbr>Mapper</h3>
+					<div class="tsd-signature tsd-kind-icon">transaction<wbr>Mapper<span class="tsd-signature-symbol">:</span> <a href="../modules/_uris_itransactionmapper_.html#itransactionmapper" class="tsd-signature-type">ITransactionMapper</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/nemtech/symbol-uri-scheme/blob/0931ac3/src/uris/TransactionURI.ts#L35">uris/TransactionURI.ts:35</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -188,7 +210,7 @@
 					<div class="tsd-signature tsd-kind-icon">webhook<wbr>Url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/nemtech/symbol-uri-scheme/blob/cc62cec/src/uris/TransactionURI.ts#L37">uris/TransactionURI.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/nemtech/symbol-uri-scheme/blob/0931ac3/src/uris/TransactionURI.ts#L38">uris/TransactionURI.ts:38</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -198,7 +220,7 @@
 					<div class="tsd-signature tsd-kind-icon">ACTION<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;transaction&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/nemtech/symbol-uri-scheme/blob/cc62cec/src/uris/TransactionURI.ts#L24">uris/TransactionURI.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/nemtech/symbol-uri-scheme/blob/0931ac3/src/uris/TransactionURI.ts#L24">uris/TransactionURI.ts:24</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -208,7 +230,7 @@
 					<div class="tsd-signature tsd-kind-icon">PROTOCOL<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;web+symbol://&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/nemtech/symbol-uri-scheme/blob/cc62cec/src/uris/TransactionURI.ts#L23">uris/TransactionURI.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/nemtech/symbol-uri-scheme/blob/0931ac3/src/uris/TransactionURI.ts#L23">uris/TransactionURI.ts:23</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -226,7 +248,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/_uris_iurischeme_.iurischeme.html">IURIScheme</a>.<a href="../interfaces/_uris_iurischeme_.iurischeme.html#build">build</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/nemtech/symbol-uri-scheme/blob/cc62cec/src/uris/TransactionURI.ts#L68">uris/TransactionURI.ts:68</a></li>
+									<li>Defined in <a href="https://github.com/nemtech/symbol-uri-scheme/blob/0931ac3/src/uris/TransactionURI.ts#L71">uris/TransactionURI.ts:71</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -237,40 +259,49 @@
 					<a name="totransaction" class="tsd-anchor"></a>
 					<h3>to<wbr>Transaction</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">to<wbr>Transaction<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Transaction</span></li>
+						<li class="tsd-signature tsd-kind-icon">to<wbr>Transaction<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/_uris_iurischeme_.iurischeme.html">IURIScheme</a>.<a href="../interfaces/_uris_iurischeme_.iurischeme.html#totransaction">toTransaction</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/nemtech/symbol-uri-scheme/blob/cc62cec/src/uris/TransactionURI.ts#L61">uris/TransactionURI.ts:61</a></li>
+									<li>Defined in <a href="https://github.com/nemtech/symbol-uri-scheme/blob/0931ac3/src/uris/TransactionURI.ts#L64">uris/TransactionURI.ts:64</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Transaction</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
 					<a name="fromuri" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> fromURI</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">fromURI<span class="tsd-signature-symbol">(</span>uri<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_uris_transactionuri_.transactionuri.html" class="tsd-signature-type">TransactionURI</a></li>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">fromURI&lt;T&gt;<span class="tsd-signature-symbol">(</span>uri<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, transactionMapper<span class="tsd-signature-symbol">: </span><a href="../modules/_uris_itransactionmapper_.html#itransactionmapper" class="tsd-signature-type">ITransactionMapper</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_uris_transactionuri_.transactionuri.html" class="tsd-signature-type">TransactionURI</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/nemtech/symbol-uri-scheme/blob/cc62cec/src/uris/TransactionURI.ts#L45">uris/TransactionURI.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/nemtech/symbol-uri-scheme/blob/0931ac3/src/uris/TransactionURI.ts#L47">uris/TransactionURI.ts:47</a></li>
 								</ul>
 							</aside>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>uri: <span class="tsd-signature-type">string</span></h5>
 								</li>
+								<li>
+									<h5>transactionMapper: <a href="../modules/_uris_itransactionmapper_.html#itransactionmapper" class="tsd-signature-type">ITransactionMapper</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_uris_transactionuri_.transactionuri.html" class="tsd-signature-type">TransactionURI</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_uris_transactionuri_.transactionuri.html" class="tsd-signature-type">TransactionURI</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -281,6 +312,9 @@
 				<ul>
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_uris_itransactionmapper_.html">"uris/ITransaction<wbr>Mapper"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_uris_iurischeme_.html">"uris/IURIScheme"</a>
@@ -300,7 +334,7 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+					<li class="current tsd-kind-class tsd-parent-kind-external-module tsd-has-type-parameter">
 						<a href="_uris_transactionuri_.transactionuri.html" class="tsd-kind-icon">TransactionURI</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
@@ -314,6 +348,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_uris_transactionuri_.transactionuri.html#nodeurl" class="tsd-kind-icon">node<wbr>Url</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_uris_transactionuri_.transactionuri.html#transactionmapper" class="tsd-kind-icon">transaction<wbr>Mapper</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_uris_transactionuri_.transactionuri.html#webhookurl" class="tsd-kind-icon">webhook<wbr>Url</a>
@@ -330,7 +367,7 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_uris_transactionuri_.transactionuri.html#totransaction" class="tsd-kind-icon">to<wbr>Transaction</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
 								<a href="_uris_transactionuri_.transactionuri.html#fromuri" class="tsd-kind-icon">fromURI</a>
 							</li>
 						</ul>
