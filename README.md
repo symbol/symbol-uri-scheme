@@ -49,6 +49,7 @@ console.log(transactionURI.build());
 
 ```ts
 // examples/URIToTransaction.ts
+
 import { TransactionMapping } from 'symbol-sdk';
 import { TransactionURI } from '../src/uris/TransactionURI';
 
@@ -65,7 +66,6 @@ const transactionURI = TransactionURI.fromURI(URI, TransactionMapping.createFrom
 
 const transaction = transactionURI.toTransaction();
 console.log(transaction);
-
 
 ```
 
