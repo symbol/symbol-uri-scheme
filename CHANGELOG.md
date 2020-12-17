@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The changelog format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [0.6.0] - 17-Dec-2020
+
+**Milestone**: 0.10.0.4
+
+### Changed
+
+- Removed SDK dependency. There is no need to change this library when there is an SDK upgrade.
+- Simplified and upgraded other dependencies.
+
+
 ## [0.5.1] - 30-Sep-2020
 
 **Milestone**: 0.10.0.1
