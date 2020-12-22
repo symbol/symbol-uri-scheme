@@ -1,6 +1,6 @@
 {
   "name": "symbol-uri-scheme",
-  "version": "0.5.2",
+  "version": "0.6.0",
   "description": "Symbol library to handle uri scheme",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -8,23 +8,22 @@
     "test": "test"
   },
   "dependencies": {
-    "rxjs": "^6.5.3",
     "url-parse": "1.4.7"
   },
   "devDependencies": {
-    "symbol-sdk": "^0.21.0",
     "@types/chai": "^4.1.3",
     "@types/mocha": "^5.2.0",
     "@types/node": "^11.13.4",
     "chai": "^4.1.2",
     "chai-exclude": "^2.0.1",
     "coveralls": "^3.0.2",
-    "mocha": "^5.2.0",
-    "nyc": "^12.0.2",
-    "tslint": "^6.0.0",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0",
+    "symbol-sdk": "^0.21.0",
     "ts-node": "^7.0.0",
-    "typedoc": "^0.15.0",
-    "typescript": "^3.8.3"
+    "tslint": "^6.0.0",
+    "typedoc": "^0.19.2",
+    "typescript": "^4.1.3"
   },
   "scripts": {
     "pretest": "npm run build",
@@ -34,6 +33,7 @@
     "test:cov": "nyc --reporter=lcov --reporter=text-summary npm t",
     "test:coveralls": "npm run test:cov | coveralls",
     "coveralls-report": "cat ./coverage/lcov.info | coveralls",
+    "doc": "typedoc --out \"ts-docs/$(npm run version --silent)\" src",
     "version": "echo $npm_package_version"
   },
   "repository": {
