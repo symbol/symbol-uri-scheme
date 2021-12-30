@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 The changelog format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [0.6.1] - 30-Dec-2021
+- Dependencies are upgraded.
+
 ## [0.6.0] - 17-Dec-2020
 
 **Milestone**: 0.10.0.4
@@ -83,11 +86,12 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 - Initial release
 
 
-[0.5.1]: https://github.com/nemtech/symbol-sdk-typescript-javascript/compare/v0.4.7...v0.5.1
-[0.4.7]: https://github.com/nemtech/symbol-sdk-typescript-javascript/compare/v0.4.6...v0.4.7
-[0.4.6]: https://github.com/nemtech/symbol-sdk-typescript-javascript/compare/v0.4.5...v0.4.6
-[0.4.5]: https://github.com/nemtech/symbol-sdk-typescript-javascript/compare/v0.4.4...v0.4.5
-[0.4.4]: https://github.com/nemtech/symbol-sdk-typescript-javascript/compare/v0.4.3...v0.4.4
-[0.4.3]: https://github.com/nemtech/symbol-sdk-typescript-javascript/compare/v0.4.2...v0.4.3
-[0.4.2]: https://github.com/nemtech/symbol-sdk-typescript-javascript/compare/v0.4.1...v0.4.2
+[0.6.1]: https://github.com/symbol/symbol-uri-scheme/compare/v0.6.0...v0.6.1
+[0.5.1]: https://github.com/symbol/symbol-uri-scheme/compare/v0.4.7...v0.5.1
+[0.4.7]: https://github.com/symbol/symbol-uri-scheme/compare/v0.4.6...v0.4.7
+[0.4.6]: https://github.com/symbol/symbol-uri-scheme/compare/v0.4.5...v0.4.6
+[0.4.5]: https://github.com/symbol/symbol-uri-scheme/compare/v0.4.4...v0.4.5
+[0.4.4]: https://github.com/symbol/symbol-uri-scheme/compare/v0.4.3...v0.4.4
+[0.4.3]: https://github.com/symbol/symbol-uri-scheme/compare/v0.4.2...v0.4.3
+[0.4.2]: https://github.com/symbol/symbol-uri-scheme/compare/v0.4.1...v0.4.2
 [0.4.1]: https://github.com/nemfoundation/symbol-uri-scheme/releases/tag/v0.4.1
