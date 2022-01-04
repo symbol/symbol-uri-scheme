@@ -20,7 +20,7 @@ import { Account,
          Deadline,
          Mosaic,
          MosaicId,
-         NetworkCurrencyPublic,
+         Currency,
          NetworkType,
          PlainMessage,
          TransactionMapping,
@@ -53,8 +53,8 @@ describe('TransactionURI should', () => {
         const serializedTransaction = 'B600000000000000000000000000000000000000000' +
         '0000000000000000000000000000000000000000000000000000000000000000000000000' +
         '0000000000000000000000000000000000000000000000000000000000000000000000000' +
-        '0000000000000000000000000000190544100000000000000005816E98404000000900FFE' +
-        'A45AEA2EE9B880D5E4F9B91B75857F444F1766CDCB0600010000000000CC403C7A113BDF7' +
+        '0000000000000000000000000000198544100000000000000003BC6450C7E010000983227' +
+        '106BECAC8228ED2A598A8913E207EFB19F31869ECB0600010000000000CC403C7A113BDF7' +
         'C80969800000000000068656C6C6F';
         const URI = 'web+symbol://transaction?data=' + serializedTransaction + '&generationHash=test' +
             '&nodeUrl=http://localhost:3000';
@@ -67,8 +67,8 @@ describe('TransactionURI should', () => {
         const serializedTransaction = 'B600000000000000000000000000000000000000000' +
         '0000000000000000000000000000000000000000000000000000000000000000000000000' +
         '0000000000000000000000000000000000000000000000000000000000000000000000000' +
-        '0000000000000000000000000000190544100000000000000005816E98404000000900FFE' +
-        'A45AEA2EE9B880D5E4F9B91B75857F444F1766CDCB0600010000000000CC403C7A113BDF7' +
+        '0000000000000000000000000000198544100000000000000003BC6450C7E010000983227' +
+        '106BECAC8228ED2A598A8913E207EFB19F31869ECB0600010000000000CC403C7A113BDF7' +
         'C80969800000000000068656C6C6F';
         const URI = 'web+symbol://transaction?data=' + serializedTransaction +
             '&webhookUrl=http://someexternalserver.com/webhookUrl';
@@ -85,22 +85,22 @@ describe('TransactionURI should', () => {
 
     it('build the URI from serialized data', () => {
         const serialized = TransferTransaction.create(
-            Deadline.create(),
-            Account.generateNewAccount(NetworkType.MIJIN_TEST).address,
-            [NetworkCurrencyPublic.createRelative(10)],
+            Deadline.create(1),
+            Account.generateNewAccount(NetworkType.TEST_NET).address,
+            [Currency.PUBLIC.createRelative(10)],
             PlainMessage.create('hello'),
-            NetworkType.MIJIN_TEST).serialize();
+            NetworkType.TEST_NET).serialize();
         const transactionURI = new TransactionURI(serialized, TransactionMapping.createFromPayload);
         expect(transactionURI.build()).to.deep.equal('web+symbol://transaction?data=' + serialized);
     });
 
     it('create a transaction', () => {
         const transaction = TransferTransaction.create(
-            Deadline.create(),
-            Account.generateNewAccount(NetworkType.MIJIN_TEST).address,
+            Deadline.create(1),
+            Account.generateNewAccount(NetworkType.TEST_NET).address,
             [new Mosaic(new MosaicId('7cdf3b117a3c40cc'), UInt64.fromUint(10000000))],
             PlainMessage.create('hello'),
-            NetworkType.MIJIN_TEST);
+            NetworkType.TEST_NET);
             console.log(transaction.serialize());
         const transactionURI = new TransactionURI(transaction.serialize(), TransactionMapping.createFromPayload);
         expect(transactionURI.toTransaction()).to.deep.equal(transaction);
